@@ -30,12 +30,12 @@ Made with love by...
 
 ## Acknowledgments
 
-Some of the work for this project was started by Sudharsan Balasubrami '22 (KKK) and Maria Roodnitsky '22 (❤️) during COSC 65 (Smartphone Programming) during 20S. Since then, many people have touched this project, Dartmouth students and non-Dartmouth students alike. We give thanks to everyone who has listened to our ideas, offered their advice, and provided a window into their own invaluable experiences. 
+Some of the work for this project was started by Sudharsan Balasubrami '22 (Tri Kap) and Maria Roodnitsky '22 (❤️) during COSC 65 (Smartphone Programming) during 20S. Since then, many people have touched this project, Dartmouth students and non-Dartmouth students alike. We give thanks to everyone who has listened to our ideas, offered their advice, and provided a window into their own invaluable experiences. 
 
 Thank you to the following:
 * Andrew Campbell 
 * Adam Rinehouse '19 (ΖΨ)
 * Nupur Udipi '21 (Georgia Tech) 
 * Gayeong Song '22 (🥐)
-* Teddy Press '23 (KKK) 
+* Teddy Press '23 (Tri Kap) 
 
