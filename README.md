@@ -1,9 +1,10 @@
-# Project Name
+# OnNight
 
-![Team Photo](Insert a Team Photo URL here)
-[*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
+![the-best-team](https://user-images.githubusercontent.com/65991441/118315938-03bc2000-b4ab-11eb-92a1-bb04308153c1.png)
 
-TODO: short project description, some sample screenshots or mockups
+Welcome to the repository for the CS52 team who loves Dartmouth endlessly. We hope that -- just by poking around here -- some of that love transfers over to you. 💚
+
+Have fun!
 
 ## Architecture
 
