@@ -17,7 +17,7 @@ Have fun!
 
 ## Setup
 
-To run this app (before deployment), please clone the repository, do `npm install` and run `expo start`. From here, there are a number of ways to view the running app. You can use the links provide in the terminal to view it in the browser, or you can scan the QR code in the terminal with your phone and view it in the expo app (which you need to download).
+To run this app (before deployment), please clone the repository, do `npm install` and run `expo start`. To get the server to work, please navigate to that repo, clone it, `npm install`, and `npm run`. From here, there are a number of ways to view the running app. You can use the links provide in the terminal to view it in the browser, or you can scan the QR code in the terminal with your phone and view it in the expo app (which you need to download).
 
 ## Deployment
 
@@ -29,7 +29,7 @@ Made with love by...
 
 * Ray Huang '21 (ΖΨ)
 * Maria Roodnitsky '22 (❤️) 
-* Aarnav Aggrawal '23 (😄) 
+* Aarnav Aggarwal '23 (😄) 
 * Rishik Lad '23 (🌊) 
 * Will Toth'23 (ΨΥ)
 
