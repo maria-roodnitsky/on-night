@@ -9,15 +9,19 @@ Have fun!
 
 ## Architecture
 
-TODO:  descriptions of code organization and tools and libraries used
+### MERnN Stack (Mongo + Express + React(native) + Node)!!
+
+**React Native+Node:** This will be our front end architecture. Similar to React, this will allow us to do all of the same essential things that we can in React, but for Mobile. At the moment, we have, instead of pulling the starter pack, pulled the React Native EC Assignment, which is currently accessing the youtube api, but this api URL will eventually link to our api and backend!!
+
+**Express + Mongo:** The Express server and MongoDB database will serve as our back end architecture and API, allowing our client to grab data easily from the database.
 
 ## Setup
 
-TODO: how to get the project dev environment up and running, npm install etc
+To run this app (before deployment), please clone the repository, do `npm install` and run `expo start`. From here, there are a number of ways to view the running app. You can use the links provide in the terminal to view it in the browser, or you can scan the QR code in the terminal with your phone and view it in the expo app (which you need to download).
 
 ## Deployment
 
-TODO: how to deploy the project
+There are a number of places to deploy this and a number of ways to do so. The first and easiest would be to deploy the Expo store. To do this, we can, through the Expo XDE, hit publish, and our Expo app will be available to everyone in the world. IOS, Android, Google Play, etc. all have their own processes for app deployment, so we'll need to determine where we want to release it and when.
 
 ## Authors
 
