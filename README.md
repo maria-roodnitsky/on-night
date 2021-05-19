@@ -1,3 +1,4 @@
+
 # OnNight
 
 ![the-best-team](https://user-images.githubusercontent.com/65991441/118315938-03bc2000-b4ab-11eb-92a1-bb04308153c1.png)
@@ -38,4 +39,3 @@ Thank you to the following:
 * Nupur Udipi '21 (Georgia Tech) 
 * Gayeong Song '22 (🥐)
 * Teddy Press '23 (Tri Kap) 
-
