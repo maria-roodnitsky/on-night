@@ -23,6 +23,8 @@ To run this app (before deployment), please clone the repository, do `npm instal
 
 There are a number of places to deploy this and a number of ways to do so. The first and easiest would be to deploy the Expo store. To do this, we can, through the Expo XDE, hit publish, and our Expo app will be available to everyone in the world. IOS, Android, Google Play, etc. all have their own processes for app deployment, so we'll need to determine where we want to release it and when.
 
+The backend will be deployed on Heroku. 
+
 ## Authors
 
 Made with love by...
