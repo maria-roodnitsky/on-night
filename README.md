@@ -3,11 +3,11 @@
 
 ## Dev Site Update
 
-**Front End:** We built the frontend using React Native. We added the Safety, Events, and Users tab. Both, Events and Users, tab are dynamic and fetch data from the API (backend). The events tab displays the frat events and the users tab displays the users of the app, both of which will be updated by the admins. Safety page is a static page which provides information about safety guidelies that need to be followed in frats. The app uses a color theme which is integral to the app.
+**Front End:** We built the frontend using React Native. We added the Safety, Events, and Users tab. Both, Events and Users, tab are dynamic and fetch data from the API (backend). The events tab displays the frat events and the users tab displays the users of the app, both of which will be updated by the admins. Safety page is a static page which provides information about safety guidelies that need to be followed in frats. We utilize a color theme which is integral to the app. Note that while the app is fetching data at the momoment, all of the API functions (get, post, delete, put) are functional. The back end README is updated as well at https://github.com/dartmouth-cs52-21S/project-api-on-night.
 
 What Worked: We were able to create the front end in React Native from Scratch. We were able to make the events, users, and safety recommendations scrollable. All the pages have sufficient border margins and display the text efficiently. We were able to fetch data from API and display on the app. 
 
-What did not work: There were a lot of things that worked in React but did not work in React Native. 
+What did not work: There were a lot of things that worked in React but did not work in React Native. We had to, in a way, recreate our understanding of some react/html elements, usting views, flatlists, and stack navigators and screens. 
 
 ![devsite](https://github.com/dartmouth-cs52-21S/project-on-night/blob/d4f2ac163fdda8a3598990f7badb7409b8fbb316/img/devsite.gif)
 
