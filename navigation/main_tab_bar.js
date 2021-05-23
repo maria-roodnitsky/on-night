@@ -3,8 +3,9 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
-import SearchTab from './search_tab';
-import About from '../components/about';
+import EventsTab from './events_tab';
+import UsersTab from './users_tab';
+import SafetyTab from './safety_tab';
 
 const AboutTab = (props) => {
   return <View style={{ flex: 1, justifyContent: 'center' }}><Text>about</Text></View>;
@@ -22,21 +23,25 @@ const MainTabBar = () => {
               let iconName;
                   
                   // Customize the icon we display based on the tab route
-              if (route.name === 'About') {
-                iconName = 'info-circle';
+              if (route.name === 'Alcohol Safety') {
+                iconName = 'beer';
               } 
                   // Adding the search icon
-                  else if (route.name === 'Search') {
-                iconName = 'search';
-              }
+                  else if (route.name === 'Events') {
+                iconName = 'calendar';
+              } else if (route.name === 'Users') {
+                iconName = 'user';
+              } 
+              
           
                   // Return the respective icon
               return <Ionicons name={iconName} size={26} color={focused ? '#58AADA' : 'grey'} />;
             },
           })}
         >
-          <Tab.Screen name="Search" component={SearchTab} />
-          <Tab.Screen name="About" component={About} />
+          <Tab.Screen name="Events" component={EventsTab} />
+          <Tab.Screen name="Users" component={UsersTab} />
+          <Tab.Screen name="Alcohol Safety" component={SafetyTab} />
         </Tab.Navigator>
       </NavigationContainer>
     );

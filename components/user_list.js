@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { SearchBar } from 'react-native-elements';
 import {
@@ -10,8 +9,10 @@ import {
   FlatList,
   TouchableHighlight,
 } from 'react-native';
+import {getEvents} from '../api_calls';
+import axios from 'axios';
 
-import youtubeSearch from '../youtube-api';
+const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
 
 const styles = StyleSheet.create({
     container: {
@@ -52,42 +53,29 @@ const styles = StyleSheet.create({
     },
   });
 
-class VideoList extends Component {
+class UserList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       query: 'true facts',
       isLoading: true,
       dataSource: [],
+      users: [],
     };
-
-    this.renderVideoCell = this.renderVideoCell.bind(this);
   }
 
   // ---------- componentDidMount here! -----------//
 
   componentDidMount() {
-      this.fetchData();
+      this.fetchUsers();
   }
 
-  // ------------ put fetchData here! -------------//
+  fetchUsers = () => {
+    // const allEvents = getEvents();
+      axios.get(`${ROOT_URL}/users`).then((response) => {
+          this.setState({users: response.data});
+      })
 
-  fetchData() {
-    youtubeSearch(this.state.query)
-      .then((responseData) => {
-        this.setState({
-          dataSource: responseData,
-          isLoading: false,
-        });
-      }).catch((error) => {
-        console.log(error);
-      });
-  }
-
-
-  showVideoDetail(video) {
-    // pass in video into this.props.navigation.state.params.video in navigated view
-    this.props.navigation.navigate('Detail', { video });
   }
 
   renderLoadingView() {
@@ -98,34 +86,33 @@ class VideoList extends Component {
     );
   }
 
-
-  renderVideoCell(video) {
+  renderUserCell(user) {
     return (
-      <TouchableHighlight onPress={() => { this.showVideoDetail(video); }} underlayColor="orange">
-        <View>
-          <View style={styles.container}>
-            <Image
-              source={{ uri: video.snippet.thumbnails.default.url }}
-              style={styles.thumbnail}
-            />
-            <View style={styles.rightContainer}>
-              <Text style={styles.title}>{video.snippet.title}</Text>
-              <Text style={styles.subtitle}>{video.snippet.description}</Text>
-            </View>
+      <View>
+        <View style={styles.container}>
+          {/* <Image
+            source={{ uri: video.snippet.thumbnails.default.url }}
+            style={styles.thumbnail}
+          /> */}
+          <View style={styles.rightContainer}>
+            <Text style={styles.title}>{user.lastName}, {user.firstName}</Text>
+            <Text style={styles.subtitle}>{user.classYear}</Text>
+            <Text style={styles.subtitle}>{user.house}</Text>
+            <Text>{user.permission}</Text>
           </View>
-          <View style={styles.separator} />
         </View>
-      </TouchableHighlight>
+        <View style={styles.separator} />
+      </View>
     );
   }
 
   render() {
-    if (this.state.isLoading) {
-      return this.renderLoadingView();
-    }
+    // if (this.state.isLoading) {
+    //   return this.renderLoadingView();
+    // }
     return (
       <View>
-        <SearchBar
+        {/* <SearchBar
           backgroundColor="#c4302b"
           showsCancelButton={false}
           textFieldBackgroundColor="#c4302b"
@@ -141,10 +128,15 @@ class VideoList extends Component {
           renderItem={({ item }) => { return this.renderVideoCell(item); }}
           keyExtractor={(item) => item.snippet.thumbnails.default.url}
           style={styles.listView}
+        /> */}
+        <FlatList
+          data={this.state.users}
+          renderItem={({ item }) => { return this.renderUserCell(item); }}
+          style={styles.listView}
         />
       </View>
     );
   }
 }
 
-export default VideoList;
+export default UserList;
