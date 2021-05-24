@@ -9,11 +9,16 @@ import {
   Text,
   FlatList,
   TouchableHighlight,
+  TouchableOpacity
 } from 'react-native';
 import {getEvents} from '../api_calls';
 import axios from 'axios';
+import { createStackNavigator } from '@react-navigation/stack';
+
 
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
+
+const Stack = createStackNavigator();
 
 const styles = StyleSheet.create({
     container: {
@@ -52,6 +57,10 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+    image: {
+      width: 20,
+      height: 20
+    }
   });
 
 class EventList extends Component {
@@ -96,19 +105,25 @@ class EventList extends Component {
   renderEventCell(event) {
     return (
       <View>
-        <View style={styles.container}>
-          {/* <Image
-            source={{ uri: video.snippet.thumbnails.default.url }}
-            style={styles.thumbnail}
-          /> */}
-          <View style={styles.rightContainer}>
-            <Text style={styles.title}>{event.title}</Text>
-            <Text style={styles.subtitle}>{event.location}</Text>
-            <Text style={styles.subtitle}>{event.month}/{event.day}/{event.year}, {event.time}</Text>
-            <Text>{event.description}</Text>
+        <TouchableOpacity onPress={() => {this.props.navigation.navigate("Test")}}>
+          <View style={styles.container}>
+            {/* <Image
+              source={{ uri: video.snippet.thumbnails.default.url }}
+              style={styles.thumbnail}
+            /> */}
+            <View style={styles.rightContainer}>
+              <Image
+                source={require('../img/greek_spaces/alphachi.jpg')}
+                style={styles.image}
+              />
+              <Text style={styles.title}>{event.title}</Text>
+              <Text style={styles.subtitle}>{event.location}</Text>
+              <Text style={styles.subtitle}>{event.month}/{event.day}/{event.year}, {event.time}</Text>
+              <Text>{event.description}</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.separator} />
+          <View style={styles.separator} />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -119,6 +134,7 @@ class EventList extends Component {
     // }
     return (
       <View>
+        
         <FlatList
           data={this.state.events}
           renderItem={({ item }) => { return this.renderEventCell(item); }}

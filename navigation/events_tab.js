@@ -12,6 +12,8 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 
 import EventList from '../components/event_list';
+import Test from '../components/test';
+import Safety from '../components/safety';
 import { withTheme } from 'react-native-elements';
 
 const Stack = createStackNavigator();
@@ -35,7 +37,11 @@ const EventsTab = () => {
               },
               headerTintColor: '#fff',
           }}
-          />
+        />
+        <Stack.Screen
+          name="Test"
+          component={Test}
+        />
       </Stack.Navigator>
   );
 }
