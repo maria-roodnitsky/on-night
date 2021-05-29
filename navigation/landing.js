@@ -47,15 +47,15 @@ class Landing extends Component {
             <SafeAreaView>
                 <Text> Sign Up</Text>
                 <Text> First Name </Text>
-                <TextInput style={styles.input} value={this.state.firstName} onChangeText={this.onfirstNameChange} />
+                <TextInput style={styles.input} value={this.state.firstName} onChange={this.onfirstNameChange} />
                 <Text> Last Name </Text>
-                <TextInput style={styles.input} value={this.state.lastName} onChangeText={this.onlastNameChange} />
+                <TextInput style={styles.input} value={this.state.lastName} onChange={this.onlastNameChange} />
                 <Text> Class Year </Text>
-                <TextInput style={styles.input} value={this.state.classYear} onChangeText={this.onclassYearChange} />
+                <TextInput style={styles.input} value={this.state.classYear} onChange={this.onclassYearChange} />
                 <Text> Email </Text>
-                <TextInput style={styles.input} value={this.state.email} onChangeText={this.onEmailChange}/>
+                <TextInput style={styles.input} value={this.state.email} onChange={this.onEmailChange}/>
                 <Text> Password </Text>
-                <TextInput style={styles.input} value={this.state.password} onChangeText={this.onPasswordChange} />
+                <TextInput style={styles.input} value={this.state.password} onChange={this.onPasswordChange} />
 
                 <Button title="sign up NOW" onPress={this.props.signup} />
                 <Text>Already Have an account?</Text>
@@ -70,9 +70,9 @@ class Landing extends Component {
             <SafeAreaView>
                 <Text> Sign In</Text>
                 <Text> Email </Text>
-                <TextInput style={styles.input} value={this.state.email} onChangeText={this.onEmailChange} />
+                <TextInput style={styles.input} value={this.state.email} onChange={this.onEmailChange} />
                 <Text> Password </Text>
-                <TextInput style={styles.input} value={this.state.password} onChangeText={this.onPasswordChange} />
+                <TextInput style={styles.input} value={this.state.password} onChange={this.onPasswordChange} />
                 <Button title="sign In NOW" onPress={this.props.signup} />
                 <Text>Don't Have an account?</Text>
                 <Button title="sign up"onPress={this.switch} />
