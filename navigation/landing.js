@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
-import TextareaAutosize from 'react-textarea-autosize';
+import { Text, View, Button, TextInput, SafeAreaView, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+    input: {
+      height: 45,
+      margin: 20,
+      borderWidth: 3,
+    },
+  });
 
 class Landing extends Component {
     constructor(props) {
@@ -20,7 +27,7 @@ class Landing extends Component {
     }
 
     onfirstNameChange = (event) => {
-        this.setState({ firstName: event.target.value });
+        this.setState( {firstName: event.target.value} );
       }
     onlastNameChange = (event) => {
         this.setState({ lastName: event.target.value });
@@ -37,48 +44,49 @@ class Landing extends Component {
 
     renderSignUp = () => { 
         return (
-            <View>
-                <text> Sign Up</text>
-                <text> First Name </text>
-                <TextareaAutosize autoFocus className="name" value={this.state.firstName} onChange={this.onfirstNameChange} />
-                <text> Last Name </text>
-                <TextareaAutosize autoFocus className="name" value={this.state.lastName} onChange={this.onlastNameChange} />
-                <text> Class Year </text>
-                <TextareaAutosize autoFocus className="name" value={this.state.classYear} onChange={this.onclassYearChange} />
-                <text> Email </text>
-                <TextareaAutosize autoFocus className="email" value={this.state.email} onChange={this.onEmailChange} />
-                <text> Password </text>
-                <TextareaAutosize autoFocus className="password" value={this.state.password} onChange={this.onPasswordChange} />
+            <SafeAreaView>
+                <Text> Sign Up</Text>
+                <Text> First Name </Text>
+                <TextInput style={styles.input} value={this.state.firstName} onChangeText={this.onfirstNameChange} />
+                <Text> Last Name </Text>
+                <TextInput style={styles.input} value={this.state.lastName} onChangeText={this.onlastNameChange} />
+                <Text> Class Year </Text>
+                <TextInput style={styles.input} value={this.state.classYear} onChangeText={this.onclassYearChange} />
+                <Text> Email </Text>
+                <TextInput style={styles.input} value={this.state.email} onChangeText={this.onEmailChange}/>
+                <Text> Password </Text>
+                <TextInput style={styles.input} value={this.state.password} onChangeText={this.onPasswordChange} />
 
                 <Button title="sign up NOW" onPress={this.props.signup} />
                 <Text>Already Have an account?</Text>
 
                 <Button title="sign in"onPress={this.switch} />
-            </View>
+            </SafeAreaView>
         )
     }
 
     renderSignIn = () => { 
         return (
-            <View>
-                <text> Sign In</text>
-                <text> Email </text>
-                <TextareaAutosize autoFocus className="email" value={this.state.email} onChange={this.onEmailChange} />
-                <text> Password </text>
-                <TextareaAutosize autoFocus className="password" value={this.state.password} onChange={this.onPasswordChange} />
+            <SafeAreaView>
+                <Text> Sign In</Text>
+                <Text> Email </Text>
+                <TextInput style={styles.input} value={this.state.email} onChangeText={this.onEmailChange} />
+                <Text> Password </Text>
+                <TextInput style={styles.input} value={this.state.password} onChangeText={this.onPasswordChange} />
                 <Button title="sign In NOW" onPress={this.props.signup} />
                 <Text>Don't Have an account?</Text>
                 <Button title="sign up"onPress={this.switch} />
-            </View>
+
+            </SafeAreaView>
         )
     }
   
     render () {
         return (
-            <View>
+            <SafeAreaView>
                 {this.state.signup && this.renderSignUp()}
                 {!this.state.signup && this.renderSignIn()}
-            </View>
+            </SafeAreaView>
         );
     }
   }
