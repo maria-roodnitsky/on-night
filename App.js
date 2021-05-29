@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MainTabBar from './navigation/main_tab_bar';
 import Landing from './navigation/landing'
 import {View} from 'react-native';
+import axios from 'axios';
 
 // disable really annoying in app warnings
 console.disableYellowBox = true;
@@ -19,9 +20,14 @@ class App extends Component {
   signup = (fields) => {
     // axios.post(`${ROOT_URL}/signup`, fields).then((response) => {
     //   this.setState({authenticated: true});
-    // }).catch((error) => {
-    //   dispatch(authError(`Sign In Failed: ${error.response.data}`));
-    // });
+    // })
+
+    this.setState({authenticated: true}); }
+
+  signin = (fields) => {
+    // axios.post(`${ROOT_URL}/signin`, fields).then((response) => {
+    //   this.setState({authenticated: true});
+    // })
     this.setState({authenticated: true});
   }
 
