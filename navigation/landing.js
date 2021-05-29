@@ -19,6 +19,22 @@ class Landing extends Component {
         this.setState({signup: !this.state.signup});
     }
 
+    onfirstNameChange = (event) => {
+        this.setState({ firstName: event.target.value });
+      }
+    onlastNameChange = (event) => {
+        this.setState({ lastName: event.target.value });
+      }
+    onclassYearChange = (event) => {
+        this.setState({ classYear: event.target.value });
+      }
+    onEmailChange = (event) => {
+        this.setState({ email: event.target.value });
+      }
+    onPasswordChange = (event) => {
+        this.setState({ password: event.target.value });
+      }
+
     renderSignUp = () => { 
         return (
             <View>
