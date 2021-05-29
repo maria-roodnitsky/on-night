@@ -92,6 +92,7 @@ class Landing extends Component {
         )
     }
 
+    
     renderSignIn = () => { 
         return (
             <View style={styles.container}>
