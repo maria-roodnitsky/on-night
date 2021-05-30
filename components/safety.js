@@ -95,19 +95,18 @@ const styles = StyleSheet.create({
   //   marginRight: 20,
   //   height: 100,
   // },
-  
   title: {
-  fontSize: 20,
-  fontWeight: "bold",
-  marginBottom:5,
-  color: 'purple',
-  fontFamily: "Cochin",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom:5,
+    color: 'purple',
+    fontFamily: "Comfortaa-Regular",
   },
   
   content: {
     fontSize: 15,
     marginBottom: 5,
-    fontFamily: "Cochin",
+    fontFamily: "Open-Sans",
   },
     separator: {
     height: 1,
