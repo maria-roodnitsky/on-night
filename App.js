@@ -3,17 +3,26 @@ import MainTabBar from './navigation/main_tab_bar';
 import Landing from './navigation/landing'
 import {View} from 'react-native';
 import axios from 'axios';
+import { fonts } from 'react-native-elements/dist/config';
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 // disable really annoying in app warnings
 console.disableYellowBox = true;
 
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
 
+const getFonts = () => Font.loadAsync({
+  'Comfortaa-Regular': require('./assets/fonts/Comfortaa-Regular.ttf'),
+  'Open-Sans': require('./assets/fonts/OpenSans-Regular.ttf')
+});
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       authenticated: false,
+      fontsLoaded: false
     };
   }
 
@@ -32,10 +41,20 @@ class App extends Component {
   }
 
   render () {
-    if (this.state.authenticated) {
-      return <MainTabBar />
+    if (!this.state.fontsLoaded) {
+      return (
+        <AppLoading
+          startAsync={getFonts}
+          onError={console.warn}
+          onFinish={() => this.setState({fontsLoaded: true})}
+        />
+      );
     } else {
-      return <Landing signup={this.signup}/>
+      if (this.state.authenticated) {
+        return <MainTabBar />
+      } else {
+        return <Landing signup={this.signup}/>
+      }
     }
   }
 }
