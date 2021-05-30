@@ -46,27 +46,30 @@ class Landing extends Component {
     }
 
     onfirstNameChange = (event) => {
-        this.setState( {firstName: event.target.value} );
+        this.setState( {firstName: event });
       }
     onlastNameChange = (event) => {
-        this.setState({ lastName: event.target.value });
+        this.setState({ lastName: event });
       }
     onclassYearChange = (event) => {
-        this.setState({ classYear: event.target.value });
+        this.setState({ classYear: event });
       }
     onEmailChange = (event) => {
-        this.setState({ email: event.target.value });
+        this.setState({ email: event });
       }
     onPasswordChange = (event) => {
-        this.setState({ password: event.target.value });
+        this.setState({ password: event });
       }
 
     signedIn = () => {
-        this.props.signin({ email: this.state.email, password: this.state.password });
+        const fields = { email: this.state.email, password: this.state.password };
+        this.props.signin(fields);
     }
 
     signedUp = () => {
-        this.props.signup({ firstName: this.state.firstName, lastName: this.state.lastName, classYear: this.state.classYear, email: this.state.email, password: this.state.password });
+        const fields = { firstName: this.state.firstName, lastName: this.state.lastName, classYear: parseInt(this.state.classYear), email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
+        // const fields = { email: this.state.email, password: this.state.password };
+        this.props.signup(fields);
     }
 
     renderSignUp = () => { 
@@ -74,17 +77,17 @@ class Landing extends Component {
             <View style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
                 <Text style={styles.title}> First Name </Text>
-                <TextInput style={styles.input} value={this.state.firstName} onChange={this.onfirstNameChange} />
+                <TextInput style={styles.input} onChangeText={e=>this.onlastNameChange(e)} />
                 <Text style={styles.title}> Last Name </Text>
-                <TextInput style={styles.input} value={this.state.lastName} onChange={this.onlastNameChange} />
+                <TextInput style={styles.input} onChangeText={e=>this.onfirstNameChange(e)} />
                 <Text style={styles.title}> Class Year </Text>
-                <TextInput style={styles.input} value={this.state.classYear} onChange={this.onclassYearChange} />
+                <TextInput style={styles.input} onChangeText={e=>this.onclassYearChange(e)} />
                 <Text style={styles.title}> Email </Text>
-                <TextInput style={styles.input} value={this.state.email} onChange={this.onEmailChange}/>
+                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)}/>
                 <Text style={styles.title}> Password </Text>
-                <TextInput style={styles.input} value={this.state.password} onChange={this.onPasswordChange} />
+                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} />
 
-                <Button title="Sign Up NOW" onPress={this.props.signup} />
+                <Button title="Sign Up NOW" onPress={this.signedUp} />
                 <Text style={styles.question}>Already Have an account?</Text>
 
                 <Button title="Sign In"onPress={this.switch} />
@@ -98,10 +101,10 @@ class Landing extends Component {
             <View style={styles.container}>
                 <Text style={styles.heading}> Sign In</Text>
                 <Text style={styles.title}> Email </Text>
-                <TextInput style={styles.input} value={this.state.email} onChange={this.onEmailChange} />
+                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} />
                 <Text style={styles.title}> Password </Text>
-                <TextInput style={styles.input} value={this.state.password} onChange={this.onPasswordChange} />
-                <Button title="Sign In NOW" onPress={this.props.signup} />
+                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} />
+                <Button title="Sign In NOW" onPress={this.signedIn} />
                 <Text style={styles.question}>Don't Have an account?</Text>
                 <Button title="Sign Up"onPress={this.switch} />
 
