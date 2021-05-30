@@ -18,24 +18,28 @@ class App extends Component {
   }
 
   signup = (fields) => {
-    // axios.post(`${ROOT_URL}/signup`, fields).then((response) => {
-    //   this.setState({authenticated: true});
-    // })
-
-    this.setState({authenticated: true}); }
+    console.log(fields);
+    axios.post(`${ROOT_URL}/signup`, fields).then((response) => {
+      this.setState({authenticated: true});
+    }).catch((error) => {
+      console.log(`Signup failed. Try again`);
+    });
+  }
 
   signin = (fields) => {
-    // axios.post(`${ROOT_URL}/signin`, fields).then((response) => {
-    //   this.setState({authenticated: true});
-    // })
-    this.setState({authenticated: true});
+    console.log(fields);
+    axios.post(`${ROOT_URL}/signin`, fields).then((response) => {
+      this.setState({authenticated: true});
+    }).catch((error) => {
+      console.log("Signin failed. Try again");
+    });
   }
 
   render () {
     if (this.state.authenticated) {
-      return <MainTabBar />
+      return <MainTabBar />;
     } else {
-      return <Landing signup={this.signup}/>
+      return <Landing signup={this.signup} signin={this.signin}/>;
     }
   }
 }
