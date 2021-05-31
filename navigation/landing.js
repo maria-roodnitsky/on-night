@@ -10,10 +10,14 @@ const styles = StyleSheet.create({
   input: {
     height: 45,
     margin: 20,
-    // borderWidth: 3,
-    // borderColor: 'white',
+    opacity: .6,
     backgroundColor: '#F6F6F6',
-    borderRadius: 8
+    borderRadius: 8, 
+    textAlign: 'left',
+    paddingLeft: 16,
+    fontFamily: 'Open-Sans',
+    fontWeight: 'normal', 
+    textTransform: "uppercase"
   },
   heading: {
     fontSize: 32,
@@ -48,7 +52,8 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     color: 'white',
-    fontFamily: 'Open-Sans'
+    fontFamily: 'Open-Sans', 
+    textTransform: "uppercase"
   }
 });
 
@@ -113,9 +118,9 @@ class Landing extends Component {
 
                 {/* <Button title="Sign Up NOW" onPress={this.signedUp} /> */}
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.signedUp}>
-                  <Text style={styles.buttonText}>Sign Up NOW</Text>
+                  <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
-                <Text style={styles.question}>Already Have an account?</Text>
+                <Text style={styles.question}>Already have an account?</Text>
 
                 {/* <Button title="Sign In"onPress={this.switch} /> */}
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
@@ -130,16 +135,13 @@ class Landing extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.heading}> Sign In</Text>
-                <Text style={styles.title}> Email </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} />
-                <Text style={styles.title}> Password </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true}/>
+                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="EMAIL"/>
+                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true} placeholder="PASSWORD"/>
                 {/* <Button title="Sign In NOW" onPress={this.signedIn} backgroundColor="red"/> */}
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.signedIn}>
-                  <Text style={styles.buttonText}>Sign In NOW</Text>
+                  <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
                 <Text style={styles.question}>Don't Have an account?</Text>
-
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
                   <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
