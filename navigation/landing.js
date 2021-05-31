@@ -1,32 +1,56 @@
+import color from 'color';
 import React, { Component } from 'react';
-import { Text, View, Button, TextInput, SafeAreaView, StyleSheet } from 'react-native';
+import { Text, View, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
 import signin from '../App';
 import signup from '../App';
 
 const styles = StyleSheet.create({
-    container: {
-      },
-    input: {
-      height: 45,
-      margin: 20,
-      borderWidth: 3,
-    },
-    heading: {
-        fontSize: 32,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        margin: 25,
-      },
-      title: {
-        fontSize: 16,
-        marginLeft: 15,
-      },
-      question: {
-        fontSize: 16,
-        margin: 25,
-        color: 'red',
-      },
-  });
+  container: {
+  },
+  input: {
+    height: 45,
+    margin: 20,
+    // borderWidth: 3,
+    // borderColor: 'white',
+    backgroundColor: '#F6F6F6',
+    borderRadius: 8
+  },
+  heading: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white'
+  },
+  title: {
+    fontSize: 16,
+    marginLeft: 15,
+    fontFamily: 'Open-Sans',
+    color: 'white'
+  },
+  question: {
+    fontSize: 16,
+    margin: 25,
+    color: 'red',
+  },
+  backgroundImg: {
+    width: '100%',
+    height: '100%'
+  },
+  buttonContainer: {
+    alignSelf: 'center',
+    backgroundColor: '#A9469F',
+    width: '50%',
+    padding: 10,
+    borderRadius: 8
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: 'white',
+    fontFamily: 'Open-Sans'
+  }
+});
 
 class Landing extends Component {
     constructor(props) {
@@ -74,7 +98,7 @@ class Landing extends Component {
 
     renderSignUp = () => { 
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
                 <Text style={styles.title}> First Name </Text>
                 <TextInput style={styles.input} onChangeText={e=>this.onlastNameChange(e)} />
@@ -85,13 +109,19 @@ class Landing extends Component {
                 <Text style={styles.title}> Email </Text>
                 <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)}/>
                 <Text style={styles.title}> Password </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} />
+                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true}/>
 
-                <Button title="Sign Up NOW" onPress={this.signedUp} />
+                {/* <Button title="Sign Up NOW" onPress={this.signedUp} /> */}
+                <TouchableOpacity style={styles.buttonContainer} onPress={this.signedUp}>
+                  <Text style={styles.buttonText}>Sign Up NOW</Text>
+                </TouchableOpacity>
                 <Text style={styles.question}>Already Have an account?</Text>
 
-                <Button title="Sign In"onPress={this.switch} />
-            </View>
+                {/* <Button title="Sign In"onPress={this.switch} /> */}
+                <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
+                  <Text style={styles.buttonText}>Sign In</Text>
+                </TouchableOpacity>
+            </ScrollView>
         )
     }
 
@@ -103,10 +133,16 @@ class Landing extends Component {
                 <Text style={styles.title}> Email </Text>
                 <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} />
                 <Text style={styles.title}> Password </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} />
-                <Button title="Sign In NOW" onPress={this.signedIn} />
+                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true}/>
+                {/* <Button title="Sign In NOW" onPress={this.signedIn} backgroundColor="red"/> */}
+                <TouchableOpacity style={styles.buttonContainer} onPress={this.signedIn}>
+                  <Text style={styles.buttonText}>Sign In NOW</Text>
+                </TouchableOpacity>
                 <Text style={styles.question}>Don't Have an account?</Text>
-                <Button title="Sign Up"onPress={this.switch} />
+
+                <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
+                  <Text style={styles.buttonText}>Sign Up</Text>
+                </TouchableOpacity>
 
             </View>
         )
@@ -115,8 +151,10 @@ class Landing extends Component {
     render () {
         return (
             <SafeAreaView>
+              <ImageBackground source={require('../img/onNightBackground.jpg')} style={styles.backgroundImg}>
                 {this.state.signup && this.renderSignUp()}
                 {!this.state.signup && this.renderSignIn()}
+              </ImageBackground>
             </SafeAreaView>
         );
     }
