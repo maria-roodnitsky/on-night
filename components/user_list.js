@@ -72,7 +72,7 @@ class UserList extends Component {
 
   fetchUsers = () => {
     // const allEvents = getEvents();
-      axios.get(`${ROOT_URL}/users`).then((response) => {
+      axios.get(`${ROOT_URL}/users`, {headers: {'authorization': this.props.token}}).then((response) => {
           this.setState({users: response.data});
       })
 

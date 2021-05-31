@@ -22,7 +22,8 @@ class App extends Component {
     super(props);
     this.state = {
       authenticated: false,
-      fontsLoaded: false
+      fontsLoaded: false,
+      token: '',
     };
   }
 
@@ -38,7 +39,7 @@ class App extends Component {
   signin = (fields) => {
     console.log(fields);
     axios.post(`${ROOT_URL}/signin`, fields).then((response) => {
-      this.setState({authenticated: true});
+      this.setState({ authenticated: true, token: response.data.token });
     }).catch((error) => {
       console.log("Signin failed. Try again");
     });
@@ -55,9 +56,9 @@ class App extends Component {
       );
     } else {
       if (this.state.authenticated) {
-        return <MainTabBar />
+        return <MainTabBar token={this.state.token}/>
       } else {
-        return <Landing signup={this.signup}/>
+        return <Landing signup={this.signup} signin={this.signin}/>
       }
     }
   }
