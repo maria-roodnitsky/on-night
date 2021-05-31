@@ -82,7 +82,7 @@ class EventList extends Component {
 
   fetchEvents = () => {
     // const allEvents = getEvents();
-      axios.get(`${ROOT_URL}/events`).then((response) => {
+      axios.get(`${ROOT_URL}/events`, {headers: {'authorization': this.props.token}}).then((response) => {
           this.setState({events: response.data});
       })
 

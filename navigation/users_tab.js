@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
 
 // nest stack navigator to handle two internal views
 // "name" prop is the name of the route
-const UsersTab = () => {
+const UsersTab = (props) => {
   return (
       <Stack.Navigator>
         <Stack.Screen
           name="Search"
-          component={UserList}
+          children={() => <UserList token={props.token}/>}
           options={{
               title: 'Users',
               headerStyle: {
