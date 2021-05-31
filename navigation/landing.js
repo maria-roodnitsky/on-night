@@ -1,6 +1,6 @@
 import color from 'color';
 import React, { Component } from 'react';
-import { Text, View, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
+import { Text, View, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 import signin from '../App';
 import signup from '../App';
 
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   backgroundImg: {
     width: '100%',
-    height: '100%'
+    height: Dimensions.get("window").height,
   },
   buttonContainer: {
     alignSelf: 'center',
@@ -153,7 +153,7 @@ class Landing extends Component {
     render () {
         return (
             <SafeAreaView>
-              <ImageBackground source={require('../img/onNightBackground.jpg')} style={styles.backgroundImg}>
+              <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
                 {this.state.signup && this.renderSignUp()}
                 {!this.state.signup && this.renderSignIn()}
               </ImageBackground>
