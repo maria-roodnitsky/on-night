@@ -30,7 +30,7 @@ class App extends Component {
   signup = (fields) => {
     console.log(fields);
     axios.post(`${ROOT_URL}/signup`, fields).then((response) => {
-      this.setState({authenticated: true});
+      this.setState({authenticated: true, token: response.data.token});
     }).catch((error) => {
       console.log(`Signup failed. Try again`);
     });

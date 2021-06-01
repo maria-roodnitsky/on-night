@@ -1,5 +1,6 @@
 import color from 'color';
 import React, { Component } from 'react';
+import { Alert } from 'react-native';
 import { Text, View, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 import signin from '../App';
 import signup from '../App';
@@ -96,9 +97,22 @@ class Landing extends Component {
     }
 
     signedUp = () => {
-        const fields = { firstName: this.state.firstName, lastName: this.state.lastName, classYear: parseInt(this.state.classYear), email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
-        // const fields = { email: this.state.email, password: this.state.password };
-        this.props.signup(fields);
+        let pCount = 0;
+        for (const char of this.state.email) {
+            if (char == '.') {
+                pCount += 1;
+            }
+        }
+        if ((pCount == 3 || pCount == 4) && this.state.email.includes('@dartmouth.edu')) {
+            const fields = { firstName: this.state.firstName, lastName: this.state.lastName, classYear: parseInt(this.state.classYear), email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
+            // const fields = { email: this.state.email, password: this.state.password };
+            this.props.signup(fields);
+        } else {
+            Alert.alert(
+                'Invalid Email',
+                'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
+            )
+        }
     }
 
     renderSignUp = () => { 
