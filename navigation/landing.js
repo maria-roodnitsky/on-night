@@ -1,9 +1,13 @@
 import color from 'color';
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
-import { Text, View, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
+import { Text, View, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native';
 import signin from '../App';
 import signup from '../App';
+import PasswordInputText from 'react-native-hide-show-password-input';
+import { Icon } from 'react-native-elements';
+import TextBox from 'react-native-password-eye'; 
+
 
 const styles = StyleSheet.create({
   container: {
@@ -20,6 +24,11 @@ const styles = StyleSheet.create({
     fontWeight: 'normal', 
     textTransform: "uppercase"
   },
+  inputIcon : {
+    flex: 1,
+    flexDirection: 'row',
+  
+  },  
   heading: {
     fontSize: 32,
     fontWeight: 'bold',
@@ -117,7 +126,11 @@ class Landing extends Component {
 
     renderSignUp = () => { 
         return (
-            <ScrollView style={styles.container}>
+            <KeyboardAvoidingView
+              behavior={Platform.OS === "ios" ? "padding" : "height"}
+              style={{ flex: 1 }}
+            >
+              <ScrollView style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
                 <Text style={styles.title}> First Name </Text>
                 <TextInput style={styles.input} onChangeText={e=>this.onlastNameChange(e)} />
@@ -128,7 +141,12 @@ class Landing extends Component {
                 <Text style={styles.title}> Email </Text>
                 <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)}/>
                 <Text style={styles.title}> Password </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true}/>
+                {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true}/> */}
+                <TextBox
+                  onChangeText={e=>this.onPasswordChange(e)} 
+                  secureTextEntry={true}
+                  containerStyles={[styles.input]}
+                />
 
                 {/* <Button title="Sign Up NOW" onPress={this.signedUp} /> */}
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.signedUp}>
@@ -140,7 +158,8 @@ class Landing extends Component {
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
                   <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
-            </ScrollView>
+              </ScrollView>
+            </KeyboardAvoidingView>
         )
     }
 
@@ -150,7 +169,15 @@ class Landing extends Component {
             <View style={styles.container}>
                 <Text style={styles.heading}> Sign In</Text>
                 <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="EMAIL"/>
-                <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true} placeholder="PASSWORD"/>
+                {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true} placeholder="PASSWORD"/> */}
+                <TextBox
+                  onChangeText={e=>this.onPasswordChange(e)} 
+                  placeholder="PASSWORD"
+                  secureTextEntry={true}
+                  containerStyles={[styles.input]}
+                />
+                {/* <PasswordInputText style={styles.input2} onChangeText={e=>this.onPasswordChange(e)} /> */}
+                
                 {/* <Button title="Sign In NOW" onPress={this.signedIn} backgroundColor="red"/> */}
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.signedIn}>
                   <Text style={styles.buttonText}>Sign In</Text>
@@ -159,7 +186,7 @@ class Landing extends Component {
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
                   <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
-
+                <View style={{ flex : 1 }} />
             </View>
         )
     }
