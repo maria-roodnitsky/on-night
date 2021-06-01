@@ -156,6 +156,7 @@ class Landing extends Component {
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
                   <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
+                <View style={{marginTop: 40}}/>
               </ScrollView>
             </KeyboardAvoidingView>
         )
@@ -184,7 +185,6 @@ class Landing extends Component {
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
                   <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
-                <View style={{ flex : 1 }} />
             </View>
         )
     }

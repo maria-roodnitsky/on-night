@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainTabBar from './navigation/main_tab_bar';
-import Landing from './navigation/landing'
+import Landing from './components/landing';
 import {View} from 'react-native';
 import axios from 'axios';
 import { fonts } from 'react-native-elements/dist/config';
