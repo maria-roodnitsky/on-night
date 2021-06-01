@@ -15,6 +15,7 @@ import EventList from '../components/event_list';
 import Test from '../components/test';
 import Safety from '../components/safety';
 import { withTheme } from 'react-native-elements';
+import Schedule from '../components/calendar.tsx';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +30,8 @@ const EventsTab = (props) => {
       <Stack.Navigator>
         <Stack.Screen
           name="Events"
-          children={() => <EventList token={props.token}/>}
+          children={() => 
+          <Schedule/>}
           options={{
               title: 'Events',
               headerStyle: {
