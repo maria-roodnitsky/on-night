@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     paddingLeft: 16,
     fontFamily: 'Open-Sans',
-    fontWeight: 'normal', 
     textTransform: "uppercase"
   },
   inputIcon : {
@@ -31,7 +30,6 @@ const styles = StyleSheet.create({
   },  
   heading: {
     fontSize: 32,
-    fontWeight: 'bold',
     textAlign: 'center',
     margin: 25,
     fontFamily: 'Comfortaa-Regular',
