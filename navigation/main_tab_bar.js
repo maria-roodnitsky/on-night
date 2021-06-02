@@ -17,7 +17,7 @@ const MainTabBar = (props) => {
     return (
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Search"
+          initialRouteName="Events"
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused }) => {
               let iconName;

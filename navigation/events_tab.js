@@ -31,7 +31,7 @@ const EventsTab = (props) => {
         <Stack.Screen
           name="Events"
           children={() => 
-          <Schedule/>}
+          <Schedule token={props.token} />}
           options={{
               title: 'Events',
               headerStyle: {
