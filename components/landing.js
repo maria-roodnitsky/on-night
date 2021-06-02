@@ -135,15 +135,35 @@ class Landing extends Component {
           Alert.alert(
             'Invalid Email',
             'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
-        )
-        } 
+          )
+        }
+        let classYear = 2000;
+        let yearStr = "";
+        for (let i = 0; i < this.state.email.length; i += 1) {
+          if (this.state.email[i] == "@") {
+            yearStr = this.state.email[i-2] + this.state.email[i-1]
+          }
+        }
+        let first = "";
+        let last = "";
+        let pc = 0;
+        for (let character of this.state.email) {
+          if (character == '.') {
+            pc += 1;
+          } else if (pc == 0){
+            first += character;
+          } else if (pc == pCount - 2) {
+            last += character
+          }
+        }
+        classYear += parseInt(yearStr);
         if (this.state.password != this.state.confirmPassword){
           Alert.alert(
             'Passwords do not match'
         )
         }
         else {
-          const fields = { firstName: this.state.firstName, lastName: this.state.lastName, classYear: parseInt(this.state.classYear), email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
+          const fields = { firstName: first, lastName: last, classYear: classYear, email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
           // const fields = { email: this.state.email, password: this.state.password };
           this.props.signup(fields);
         }
