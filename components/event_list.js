@@ -11,7 +11,6 @@ import {
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
-import {getEvents} from '../api_calls';
 import axios from 'axios';
 import { createStackNavigator } from '@react-navigation/stack';
 
