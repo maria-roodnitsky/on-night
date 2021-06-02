@@ -157,9 +157,6 @@ class Landing extends Component {
             >
               <ScrollView style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onlastNameChange(e) } placeholder="FIRST NAME" />
-                <TextInput style={styles.input} onChangeText={e=>this.onfirstNameChange(e)} placeholder="LAST NAME"/>
-                <TextInput style={styles.input} onChangeText={e=>this.onclassYearChange(e)} placeholder="CLASS YEAR"/>
                 <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 
