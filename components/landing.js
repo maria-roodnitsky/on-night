@@ -15,8 +15,7 @@ const styles = StyleSheet.create({
   input: {
     height: 45,
     margin: 20,
-    opacity: .6,
-    backgroundColor: '#F6F6F6',
+    backgroundColor: '#ffffff80',
     borderRadius: 8, 
     textAlign: 'left',
     paddingLeft: 16,
@@ -33,7 +32,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 25,
     fontFamily: 'Comfortaa-Regular',
-    color: 'white'
+    color: 'white',
+    marginTop: Dimensions.get("window").height * .1,
   },
   title: {
     fontSize: 16,
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
   question: {
     fontSize: 16,
     margin: 25,
-    color: 'red',
+    color: 'white',
+    fontFamily: 'Comfortaa-Regular'
   },
   backgroundImg: {
     width: '100%',
@@ -55,7 +56,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#A9469F',
     width: '50%',
     padding: 10,
-    borderRadius: 8
+    borderRadius: 20, 
+    margin: 10,
+    opacity: .8,
+    borderWidth: 2,
+    borderColor:'#A9469F',
+  },
+  secondaryButtonContainer: {
+    alignSelf: 'center',
+    backgroundColor: '#A9469F',
+    width: '50%',
+    padding: 10,
+    borderRadius: 20, 
+    margin: 10,
+    opacity: .6,
+    borderWidth: 2,
+    borderColor:'#A9469F',
   },
   buttonText: {
     textAlign: 'center',
@@ -141,36 +157,27 @@ class Landing extends Component {
             >
               <ScrollView style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
-                <Text style={styles.title}> First Name </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onlastNameChange(e)} />
-                <Text style={styles.title}> Last Name </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onfirstNameChange(e)} />
-                <Text style={styles.title}> Class Year </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onclassYearChange(e)} />
-                <Text style={styles.title}> Email </Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)}/>
-                <Text style={styles.title}> Password </Text>
-                {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true}/> */}
+                <TextInput style={styles.input} onChangeText={e=>this.onlastNameChange(e) } placeholder="FIRST NAME" />
+                <TextInput style={styles.input} onChangeText={e=>this.onfirstNameChange(e)} placeholder="LAST NAME"/>
+                <TextInput style={styles.input} onChangeText={e=>this.onclassYearChange(e)} placeholder="CLASS YEAR"/>
+                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 
                   secureTextEntry={true}
                   containerStyles={[styles.input]}
+                  placeholder="PASSWORD"
                 />
-                <Text style={styles.title}> Confirm Password </Text>
-                {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true}/> */}
                 <TextBox
                   onChangeText={e=>this.onConfirmPasswordChange(e)} 
                   secureTextEntry={true}
                   containerStyles={[styles.input]}
+                  placeholder="CONFIRM PASSWORD"
                 />
-                {/* <Button title="Sign Up NOW" onPress={this.signedUp} /> */}
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.signedUp}>
                   <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
                 <Text style={styles.question}>Already have an account?</Text>
-
-                {/* <Button title="Sign In"onPress={this.switch} /> */}
-                <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
+                <TouchableOpacity style={styles.secondaryButtonContainer} onPress={this.switch}>
                   <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
                 <View style={{marginTop: 40}}/>
@@ -198,8 +205,7 @@ class Landing extends Component {
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.signedIn}>
                   <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
-                <Text style={styles.question}>Don't Have an account?</Text>
-                <TouchableOpacity style={styles.buttonContainer} onPress={this.switch}>
+                <TouchableOpacity style={styles.secondaryButtonContainer} onPress={this.switch}>
                   <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
             </View>
