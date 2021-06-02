@@ -75,6 +75,7 @@ class Landing extends Component {
         classYear: '',
         email: '',
         password: '',
+        confirmPassword: '',
       };
     }
 
@@ -97,6 +98,9 @@ class Landing extends Component {
     onPasswordChange = (event) => {
         this.setState({ password: event });
       }
+    onConfirmPasswordChange = (event) => {
+        this.setState({ confirmPassword: event });
+      }
 
     signedIn = () => {
         const fields = { email: this.state.email, password: this.state.password };
@@ -110,15 +114,22 @@ class Landing extends Component {
                 pCount += 1;
             }
         }
-        if ((pCount == 3 || pCount == 4) && this.state.email.includes('@dartmouth.edu')) {
-            const fields = { firstName: this.state.firstName, lastName: this.state.lastName, classYear: parseInt(this.state.classYear), email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
-            // const fields = { email: this.state.email, password: this.state.password };
-            this.props.signup(fields);
-        } else {
-            Alert.alert(
-                'Invalid Email',
-                'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
-            )
+        if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
+
+          Alert.alert(
+            'Invalid Email',
+            'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
+        )
+        } 
+        if (this.state.password != this.state.confirmPassword){
+          Alert.alert(
+            'Passwords do not match'
+        )
+        }
+        else {
+          const fields = { firstName: this.state.firstName, lastName: this.state.lastName, classYear: parseInt(this.state.classYear), email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
+          // const fields = { email: this.state.email, password: this.state.password };
+          this.props.signup(fields);
         }
     }
 
@@ -145,7 +156,13 @@ class Landing extends Component {
                   secureTextEntry={true}
                   containerStyles={[styles.input]}
                 />
-
+                <Text style={styles.title}> Confirm Password </Text>
+                {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true}/> */}
+                <TextBox
+                  onChangeText={e=>this.onConfirmPasswordChange(e)} 
+                  secureTextEntry={true}
+                  containerStyles={[styles.input]}
+                />
                 {/* <Button title="Sign Up NOW" onPress={this.signedUp} /> */}
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.signedUp}>
                   <Text style={styles.buttonText}>Sign Up</Text>
