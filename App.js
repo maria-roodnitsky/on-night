@@ -6,6 +6,11 @@ import axios from 'axios';
 import { fonts } from 'react-native-elements/dist/config';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import { createStackNavigator } from '@react-navigation/stack';
+import titlePage from './components/title_page';
+import { NavigationContainer } from '@react-navigation/native';
+import SignIn from './components/signin';
+import SignUp from './components/signup';
 
 // disable really annoying in app warnings
 console.disableYellowBox = true;
@@ -16,6 +21,8 @@ const getFonts = () => Font.loadAsync({
   'Comfortaa-Regular': require('./assets/fonts/Comfortaa-Regular.ttf'),
   'Open-Sans': require('./assets/fonts/OpenSans-Regular.ttf')
 });
+
+const Stack = createStackNavigator();
 
 class App extends Component {
   constructor(props) {
@@ -58,7 +65,38 @@ class App extends Component {
       if (this.state.authenticated) {
         return <MainTabBar token={this.state.token}/>
       } else {
-        return <Landing signup={this.signup} signin={this.signin}/>
+        // return <Landing signup={this.signup} signin={this.signin}/>
+        return (
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="TitlePage"
+                component={titlePage}
+                options={{ 
+                  title: 'On Night',
+                  headerTransparent: true,
+                }}
+              />
+              <Stack.Screen
+                name="SignIn"
+                options={{ 
+                  headerTransparent: true,
+                }}
+              >
+                {/* {return <SignIn signin={this.signin}/>} */}
+                {props => <SignIn {...props} signin={this.signin}/>}
+              </Stack.Screen>
+              <Stack.Screen
+                name="SignUp"
+                options={{ 
+                  headerTransparent: true,
+                }}
+              >
+                {props => <SignUp {...props} signup={this.signup}/>}
+              </Stack.Screen>
+            </Stack.Navigator>
+          </NavigationContainer>
+        )
       }
     }
   }
