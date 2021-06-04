@@ -124,6 +124,9 @@ class SignIn extends Component {
             <TouchableOpacity style={styles.secondaryButtonContainer}>
               <Text style={styles.buttonText}>Sign Up</Text>
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("ForgotPW")}}>
+              <Text style={styles.buttonText}>Forgot your password?</Text>
+            </TouchableOpacity>
           </View>
         )
     }

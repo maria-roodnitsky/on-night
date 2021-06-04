@@ -11,6 +11,8 @@ import titlePage from './components/title_page';
 import { NavigationContainer } from '@react-navigation/native';
 import SignIn from './components/signin';
 import SignUp from './components/signup';
+import Verification from './components/verification';
+import ForgotPw from './components/forgot_pw'
 
 // disable really annoying in app warnings
 console.disableYellowBox = true;
@@ -94,6 +96,14 @@ class App extends Component {
               >
                 {props => <SignUp {...props} signup={this.signup}/>}
               </Stack.Screen>
+              <Stack.Screen
+                name="Verification"
+                component={Verification}
+              />
+              <Stack.Screen
+                name="ForgotPW"
+                component={ForgotPw}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         )

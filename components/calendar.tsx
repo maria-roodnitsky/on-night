@@ -3,7 +3,6 @@ import {View, TouchableOpacity, Text} from 'react-native';
 import {Agenda} from 'react-native-calendars';
 import {Card, Avatar} from 'react-native-paper';
 import axios from 'axios';
-
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
 
 

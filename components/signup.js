@@ -157,6 +157,7 @@ class SignUp extends Component {
           const fields = { firstName: first, lastName: last, classYear: classYear, email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
           // const fields = { email: this.state.email, password: this.state.password };
           this.props.signup(fields);
+          this.props.navigation.navigate("Verification");
         }
     }
 
