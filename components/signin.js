@@ -99,8 +99,15 @@ class SignIn extends Component {
     }
 
     signedIn = () => {
+      if (this.state.password == '' || this.state.email == ''){
+        Alert.alert(
+          'Fields cannnot be empty.'
+      )
+      }
+      else{
         const fields = { email: this.state.email, password: this.state.password };
         this.props.signin(fields);
+      }
     }
 
     renderSignIn = () => { 
@@ -116,12 +123,12 @@ class SignIn extends Component {
               containerStyles={[styles.input]}
             />
             {/* <PasswordInputText style={styles.input2} onChangeText={e=>this.onPasswordChange(e)} /> */}
-            
+
             {/* <Button title="Sign In NOW" onPress={this.signedIn} backgroundColor="red"/> */}
             <TouchableOpacity style={styles.buttonContainer} onPress={this.signedIn}>
               <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.secondaryButtonContainer}>
+            <TouchableOpacity style={styles.secondaryButtonContainer} onPress={() => {this.props.navigation.navigate("SignUp")}}>
               <Text style={styles.buttonText}>Sign Up</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("ForgotPW")}}>

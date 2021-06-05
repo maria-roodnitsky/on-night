@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions } from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+
   backgroundImg: {
     width: '100%',
     height: Dimensions.get("window").height,
@@ -48,9 +53,8 @@ class TitlePage extends Component {
 
   render() {
     return (
-      <View>
+      <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-        <Text>Title Page</Text>
         <TouchableOpacity style={styles.secondaryButtonContainer} onPress={() => {this.props.navigation.navigate("SignIn")}}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
@@ -58,7 +62,7 @@ class TitlePage extends Component {
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         </ImageBackground>
-      </View>
+      </SafeAreaView>
     );
   }
 }

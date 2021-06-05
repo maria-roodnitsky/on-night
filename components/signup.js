@@ -8,7 +8,6 @@ import PasswordInputText from 'react-native-hide-show-password-input';
 import { Icon } from 'react-native-elements';
 import TextBox from 'react-native-password-eye'; 
 
-
 const styles = StyleSheet.create({
   container: {
   },
@@ -95,6 +94,15 @@ class SignUp extends Component {
       };
     }
 
+
+    storeData = async () => {
+      try {
+        await AsyncStorage.setItem('email', this.state.email)
+      } catch (e) {
+        // saving error
+      }
+    }
+
     onfirstNameChange = (event) => {
         this.setState( {firstName: event });
       }
@@ -121,13 +129,6 @@ class SignUp extends Component {
                 pCount += 1;
             }
         }
-        if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
-
-          Alert.alert(
-            'Invalid Email',
-            'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
-          )
-        }
         let classYear = 2000;
         let yearStr = "";
         for (let i = 0; i < this.state.email.length; i += 1) {
@@ -148,7 +149,19 @@ class SignUp extends Component {
           }
         }
         classYear += parseInt(yearStr);
-        if (this.state.password != this.state.confirmPassword){
+        if (this.state.password == '' || this.state.email == '' || this.state.confirmPassword == ''){
+          Alert.alert(
+            'Fields cannnot be empty.'
+        )
+        }
+        else if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
+
+          Alert.alert(
+            'Invalid Email',
+            'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
+          )
+        }
+        else if (this.state.password != this.state.confirmPassword){
           Alert.alert(
             'Passwords do not match'
         )
@@ -183,10 +196,11 @@ class SignUp extends Component {
                   placeholder="CONFIRM PASSWORD"
                 />
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.signedUp}>
+
                   <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
                 <Text style={styles.question}>Already have an account?</Text>
-                <TouchableOpacity style={styles.secondaryButtonContainer} onPress={this.switch}>
+                <TouchableOpacity style={styles.secondaryButtonContainer} onPress={() => {this.props.navigation.navigate("SignIn")}}>
                   <Text style={styles.buttonText}>Sign In</Text>
                 </TouchableOpacity>
                 <View style={{marginTop: 40}}/>
