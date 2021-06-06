@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MainTabBar from './navigation/main_tab_bar';
 import Landing from './components/landing';
-import {View} from 'react-native';
+import {View, ViewPagerAndroidBase} from 'react-native';
 import axios from 'axios';
 import { fonts } from 'react-native-elements/dist/config';
 import * as Font from 'expo-font';
@@ -15,7 +15,8 @@ import Verification from './components/verification';
 import ForgotPw from './components/forgot_pw'
 
 // disable really annoying in app warnings
-console.disableYellowBox = true;
+// console.disableYellowBox = true;
+// LogBox.ignoreAllLogs(value)
 
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
 
@@ -34,7 +35,12 @@ class App extends Component {
       activated: false,
       fontsLoaded: false,
       token: '',
+      email: '',
     };
+  }
+
+  changeEmail = (email) => {
+    this.setState({email});
   }
 
   signup = (fields) => {
@@ -49,6 +55,20 @@ class App extends Component {
   signin = (fields) => {
     console.log(fields);
     axios.post(`${ROOT_URL}/signin`, fields).then((response) => {
+
+
+      // axios.post(`${ROOT_URL}/activate`, {email: fields.email}).then((response2) => {
+      //   console.log(response2.data);
+      //   if (response2.data.activated) {
+      //     this.setState({ authenticated: true, token: response.data.token });
+      //   } else {
+      //     alert("Oops. looks like you haven't verified your email yet.");
+      //   }
+      // }).catch((error1) => {
+      //   console.log("Activation failed. Try again");
+      // });
+
+
       this.setState({ authenticated: true, token: response.data.token });
     }).catch((error) => {
       console.log("Signin failed. Try again");
@@ -57,8 +77,14 @@ class App extends Component {
 
   activate = (fields) => {
     console.log(fields);
-    axios.post(`${ROOT_URL}/activate`, fields).then((response) => {
-      this.setState({ activated: true, authenticated: true});
+
+    axios.post(`${ROOT_URL}/activate`, {email: this.state.email}).then((response) => {
+      console.log(response.data);
+      if (response.data.activated) {
+        this.setState({ authenticated: true});
+      } else {
+        alert("Oops. looks like you haven't verified your email yet.");
+      }
     }).catch((error) => {
       console.log("Activation failed. Try again");
     });
@@ -104,12 +130,15 @@ class App extends Component {
                   headerTransparent: true,
                 }}
               >
-                {props => <SignUp {...props} signup={this.signup}/>}
+                {props => <SignUp {...props} signup={this.signup} changeEmail={this.changeEmail}/>}
               </Stack.Screen>
               <Stack.Screen
                 name="Verification"
-                component={Verification}
-              />
+                // component={Verification}
+                children={() => <Verification activate={this.activate}/>}
+              >
+                {/* {props => <Verification {...props} activated={this.activate}/>} */}
+                </Stack.Screen>
               <Stack.Screen
                 name="ForgotPW"
                 component={ForgotPw}

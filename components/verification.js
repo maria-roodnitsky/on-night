@@ -56,7 +56,7 @@ class Verification extends Component {
 
   activated = () => {
       const fields = { email: this.state.email};
-      activate(fields);
+      this.props.activate(fields);
   }
 
   render() {

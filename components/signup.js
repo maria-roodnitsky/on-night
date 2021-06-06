@@ -123,6 +123,7 @@ class SignUp extends Component {
       }
 
     signedUp = () => {
+        this.props.changeEmail(this.state.email);
         let pCount = 0;
         for (const char of this.state.email) {
             if (char == '.') {
