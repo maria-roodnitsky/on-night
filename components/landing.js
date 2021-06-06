@@ -177,7 +177,7 @@ class Landing extends Component {
             >
               <ScrollView style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
+                <TextInput autoCapitalize = 'none' style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 
                   secureTextEntry={true}
@@ -208,7 +208,7 @@ class Landing extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.heading}> Sign In</Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="EMAIL"/>
+                <TextInput autoCapitalize = 'none' style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="EMAIL"/>
                 {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true} placeholder="PASSWORD"/> */}
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 

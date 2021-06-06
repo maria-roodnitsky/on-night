@@ -21,7 +21,7 @@ const MainTabBar = (props) => {
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused }) => {
               let iconName;
-                  
+
                   // Customize the icon we display based on the tab route
               if (route.name === 'Alcohol Safety') {
                 iconName = 'beer';
