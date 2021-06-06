@@ -3,8 +3,8 @@ import {View, TouchableOpacity, Text} from 'react-native';
 import {Agenda} from 'react-native-calendars';
 import {Card, Avatar} from 'react-native-paper';
 import axios from 'axios';
-
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
+
 
 
 
@@ -109,6 +109,16 @@ const Schedule: React.FC = (props) => {
         loadItemsForMonth={loadEvents}
         selected={'2021-11-22'}
         renderItem={renderEvent}
+        theme={{
+            selectedDayBackgroundColor: '#A9469F60',
+            backgroundColor: '#32315C',
+            calendarBackground: '#32315C',
+            agendaKnobColor: 'white',
+            selectedDotColor: '#ffffff',
+            dayTextColor: 'white',
+            monthTextColor: 'white',
+
+}}
       />
     </View>
   );
