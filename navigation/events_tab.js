@@ -4,8 +4,11 @@ import {
   StyleSheet,
   View,
   Image,
+  ImageBackground,
   Text,
+  SafeAreaView,
   FlatList,
+  Dimensions,
   TouchableHighlight,
   Button,
 } from 'react-native';
@@ -20,7 +23,13 @@ import Schedule from '../components/calendar.tsx';
 const Stack = createStackNavigator();
 
 const styles = StyleSheet.create({ 
-  
+  heading: {
+    backgroundColor: '#1c1d31',
+  },
+  backgroundImg: {
+    width: '100%',
+    height: Dimensions.get("window").height,
+  }
 });
 
 // nest stack navigator to handle two internal views
@@ -30,14 +39,24 @@ const EventsTab = (props) => {
       <Stack.Navigator>
         <Stack.Screen
           name="Events"
-          children={() => 
-          <Schedule token={props.token} />}
+          children={() =>
+            <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
+            <Schedule token={props.token}  styles={styles.heading}/>
+            </ImageBackground>
+          }
           options={{
-              title: 'Events',
-              headerStyle: {
-              backgroundColor: '#A9469F',
-              },
-              headerTintColor: '#fff',
+            title: 'Events',
+            headerStyle: {
+              backgroundColor: '#1c1d31',
+              opacity: 1,
+              elevation: 0,
+            },
+            headerTitleStyle: {
+              fontSize: 24,
+              textAlign: 'left',
+              fontFamily: 'Comfortaa-Regular',
+              color: 'white',
+            },
           }}
         />
         <Stack.Screen

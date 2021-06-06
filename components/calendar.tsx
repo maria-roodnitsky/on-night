@@ -7,6 +7,7 @@ const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
 
 
 
+
 const timeToString = (time) => {
   const date = new Date(time);
   return date.toISOString().split('T')[0];
@@ -108,6 +109,16 @@ const Schedule: React.FC = (props) => {
         loadItemsForMonth={loadEvents}
         selected={'2021-11-22'}
         renderItem={renderEvent}
+        theme={{
+            selectedDayBackgroundColor: '#A9469F60',
+            backgroundColor: '#32315C',
+            calendarBackground: '#32315C',
+            agendaKnobColor: 'white',
+            selectedDotColor: '#ffffff',
+            dayTextColor: 'white',
+            monthTextColor: 'white',
+
+}}
       />
     </View>
   );
