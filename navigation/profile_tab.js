@@ -249,7 +249,7 @@ class ProfileTab extends Component {
               color: 'white',
             }}}
           >
-            {props => <StudentSearch {...props} users={this.state.users}/>}
+            {props => <StudentSearch {...props} users={this.state.users} user={this.state.user}/>}
           </Stack.Screen>
         </Stack.Navigator>
       );
