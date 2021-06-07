@@ -19,6 +19,10 @@ const MainTabBar = (props) => {
       <NavigationContainer>
         <Tab.Navigator
           initialRouteName="Events"
+          tabBarOptions={{ 
+              style: {backgroundColor: '#1c1d31'},
+              showLabel: false
+          }}
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused }) => {
               let iconName;
@@ -37,7 +41,7 @@ const MainTabBar = (props) => {
           
                   // Return the respective icon
               // return <Ionicons name={iconName} size={26} color={focused ? '#58AADA' : 'grey'} />;
-              return <CustomIcon name={iconName} size={26} color={focused ? '#58AADA' : 'grey'}/>
+              return <CustomIcon name={iconName} size={26} color={focused ? '#58AADA' : 'white'}/>
 
             },
           })}
