@@ -156,7 +156,7 @@ class SignUp extends Component {
             'Fields cannnot be empty.'
         )
         }
-        else if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
+        else if ((pCount !== 3 && pCount !== 4) || !this.state.email.includes('@dartmouth.edu')) {
 
           Alert.alert(
             'Invalid Email',
@@ -167,9 +167,22 @@ class SignUp extends Component {
           Alert.alert(
             'Passwords do not match'
         )
-        }
-        else {
-          const fields = { firstName: first, lastName: last, classYear: classYear, email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none" };
+        } else {
+          let name = ''
+          let currCount = 0;
+          let i = 0;
+          while (currCount <= pCount - 2) {
+            if (this.state.email[i] == '.') {
+              if (currCount != pCount - 2) {
+                name += ' ';
+              }
+              currCount += 1;
+            } else {
+              name += this.state.email[i];
+            }
+            i += 1;
+          }
+          const fields = { firstName: first, lastName: last, classYear: classYear, email: this.state.email, password: this.state.password, house: "none", sex: "N/A", permission: "none", name: name };
           // const fields = { email: this.state.email, password: this.state.password };
           this.props.signup(fields);
           this.props.navigation.navigate("Verification");
