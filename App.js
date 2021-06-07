@@ -38,6 +38,7 @@ class App extends Component {
       fontsLoaded: false,
       token: '',
       email: '',
+      id:'',
     };
   }
 
@@ -103,9 +104,10 @@ class App extends Component {
 
   forgotPasswordEmailVerification = (fields) => {
     console.log(fields);
-    axios.post(`${ROOT_URL}/reset/sendemail`, fields).then((response) => {
+    axios.get(`${ROOT_URL}/users/info`, fields).then((response) => {
       console.log(response.data);
-      if (response.data){
+      id: response.data.id;
+      if (response.data.resettingPassword){
         this.props.navigation.navigate("changePassword");
       }
       else{
@@ -118,7 +120,7 @@ class App extends Component {
 
   passwordReset = (fields) => {
     console.log(fields);
-    axios.post(`${ROOT_URL}/reset/sendemail`, fields).then((response) => {
+    axios.post(`${ROOT_URL}/users/:${id}`, fields).then((response) => {
       console.log(response.data);
       this.setState({ authenticated: true});
     }).catch((error) => {
