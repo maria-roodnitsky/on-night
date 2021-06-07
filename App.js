@@ -46,6 +46,10 @@ class App extends Component {
     this.setState({email});
   }
 
+  changeId = (id) => {
+    this.setState({id});
+  }
+
   signup = (fields) => {
     console.log(fields);
     axios.post(`${ROOT_URL}/signup`, fields).then((response) => {
@@ -119,7 +123,8 @@ class App extends Component {
 
   passwordReset = (fields) => {
     console.log(fields);
-    axios.put(`${ROOT_URL}/users/:${id}`, fields).then((response) => {
+    console.log(this.state.id);
+    axios.put(`${ROOT_URL}/users/${this.state.id}`, fields).then((response) => {
       console.log(response.data);
       this.setState({ authenticated: true});
     }).catch((error) => {
@@ -177,7 +182,7 @@ class App extends Component {
               <Stack.Screen
                 name="ForgotPasswordVerification"
               >
-                {props => <ForgotPasswordVerification {...props} email={this.state.email} forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
+                {props => <ForgotPasswordVerification {...props} changeId={this.changeId} email={this.state.email} forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
               </Stack.Screen>
 
               <Stack.Screen

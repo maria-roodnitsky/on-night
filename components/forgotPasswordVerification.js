@@ -68,6 +68,7 @@ class ForgotPasswordVerification extends Component {
     axios.post(`${ROOT_URL}/users/info`, {email: this.props.email}).then((response) => {
       console.log(response.data);
       // id: response.data.id;
+      this.props.changeId(response.data.user._id);
       if (response.data.user.resettingPassword){
         this.props.navigation.navigate("changePassword");
         // console.log('hey');
