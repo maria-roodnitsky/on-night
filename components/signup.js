@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     margin: 25,
     color: 'white',
-    fontFamily: 'Comfortaa-Regular'
+    fontFamily: 'Comfortaa-Regular',
+    textAlign: 'center'
   },
   backgroundImg: {
     width: '100%',

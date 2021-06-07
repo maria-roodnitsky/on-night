@@ -111,14 +111,19 @@ class App extends Component {
                 name="TitlePage"
                 component={titlePage}
                 options={{ 
-                  title: 'On Night',
+                  title: '',
                   headerTransparent: true,
                 }}
               />
               <Stack.Screen
                 name="SignIn"
                 options={{ 
+                  title: '',
                   headerTransparent: true,
+                  headerTintColor: "white",
+                  headerStyle: {
+                    height: 180, // Specify the height of your custom header
+                  }
                 }}
               >
                 {/* {return <SignIn signin={this.signin}/>} */}
@@ -127,7 +132,12 @@ class App extends Component {
               <Stack.Screen
                 name="SignUp"
                 options={{ 
-                  headerTransparent: true,
+                 title: '',
+                 headerTransparent: true,
+                 headerTintColor: "white",
+                 headerStyle: {
+                 height: 180, // Specify the height of your custom header
+                                  }
                 }}
               >
                 {props => <SignUp {...props} signup={this.signup} changeEmail={this.changeEmail}/>}
