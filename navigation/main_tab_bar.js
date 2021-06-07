@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 import EventsTab from './events_tab';
-import UsersTab from './users_tab';
+import ProfileTab from './profile_tab';
 import SafetyTab from './safety_tab';
 
 const AboutTab = (props) => {
@@ -41,7 +41,7 @@ const MainTabBar = (props) => {
         >
           {/* A way to pass props like information to react native components found at https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
           <Tab.Screen name="Events" children={() => <EventsTab token={props.token}/>} />
-          <Tab.Screen name="Users" children={() => <UsersTab token={props.token}/>} />
+          <Tab.Screen name="Users" children={() => <ProfileTab token={props.token} email={props.email}/>} />
           <Tab.Screen name="Alcohol Safety" children={() => <SafetyTab token={props.token}/>} />
         </Tab.Navigator>
       </NavigationContainer>

@@ -8,7 +8,6 @@ import PasswordInputText from 'react-native-hide-show-password-input';
 import { Icon } from 'react-native-elements';
 import TextBox from 'react-native-password-eye'; 
 
-
 const styles = StyleSheet.create({
   container: {
   },
@@ -103,6 +102,7 @@ class SignIn extends Component {
     }
 
     signedIn = () => {
+      this.props.changeEmail(this.state.email);
       if (this.state.password == '' || this.state.email == ''){
         Alert.alert(
           'Fields cannnot be empty.'

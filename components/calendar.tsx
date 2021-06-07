@@ -55,9 +55,6 @@ const Schedule: React.FC = (props) => {
         if (month.length == 1) {
           month = "0" + month
         }
-        console.log(day);
-        console.log(month);
-        console.log(year);
         const dateStr = year + "-" + month + "-" + day
         const info = {location: event.location, time: event.time, title: event.title, description: event.description}
         if (eventCal.hasOwnProperty(dateStr)) {

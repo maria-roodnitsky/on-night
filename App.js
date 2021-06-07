@@ -101,7 +101,7 @@ class App extends Component {
       );
     } else {
       if (this.state.authenticated) {
-        return <MainTabBar token={this.state.token}/>
+        return <MainTabBar token={this.state.token} email={this.state.email}/>
       } else {
         // return <Landing signup={this.signup} signin={this.signin}/>
         return (
@@ -127,7 +127,7 @@ class App extends Component {
                 }}
               >
                 {/* {return <SignIn signin={this.signin}/>} */}
-                {props => <SignIn {...props} signin={this.signin}/>}
+                {props => <SignIn {...props} signin={this.signin} changeEmail={this.changeEmail}/>}
               </Stack.Screen>
               <Stack.Screen
                 name="SignUp"
