@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions } from 'react-native';
+import axios from 'axios';
 import forgotPasswordEmailVerification from '../App';
 const styles = StyleSheet.create({
   container: {
@@ -41,6 +42,8 @@ const styles = StyleSheet.create({
   }
 });
 
+const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
+
 class ForgotPasswordVerification extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +58,26 @@ class ForgotPasswordVerification extends Component {
 
   accountVerified = () => {
       const fields = { email: this.state.email};
-      this.props.forgotPasswordEmailVerification(fields);
+      // this.props.forgotPasswordEmailVerification(fields);
+      this.forgotPasswordEmailVerification(fields);
+
+  }
+
+  forgotPasswordEmailVerification = (fields) => {
+    console.log({email: this.props.email});
+    axios.post(`${ROOT_URL}/users/info`, {email: this.props.email}).then((response) => {
+      console.log(response.data);
+      // id: response.data.id;
+      if (response.data.user.resettingPassword){
+        this.props.navigation.navigate("changePassword");
+        // console.log('hey');
+      }
+      else{
+        alert("Oops. looks like you haven't verified your email yet.");
+      }
+    }).catch((error) => {
+      console.log("Resetting Password failed2. Try again");
+    });
   }
 
   render() {

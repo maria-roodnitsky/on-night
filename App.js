@@ -94,32 +94,32 @@ class App extends Component {
 
   forgotPassword = (fields) => {
     console.log(fields);
-    axios.post(`${ROOT_URL}/reset/sendemail`, fields).then((response) => {
-      console.log(response.data);
+    axios.post(`${ROOT_URL}/reset/sendemail`, fields).then(() => {
+      console.log("success");
     }).catch((error) => {
       console.log("Resetting Password failed1. Try again");
     });
   }
 
-  forgotPasswordEmailVerification = (fields) => {
-    console.log({email: this.state.email});
-    axios.get(`${ROOT_URL}/users/info`, {email: this.state.email}).then((response) => {
-      console.log(response.data);
-      id: response.data.id;
-      if (response.data.resettingPassword){
-        this.props.navigation.navigate("changePassword");
-      }
-      else{
-        alert("Oops. looks like you haven't verified your email yet.");
-      }
-    }).catch((error) => {
-      console.log("Resetting Password failed2. Try again");
-    });
-  }
+  // forgotPasswordEmailVerification = (fields) => {
+  //   console.log({email: this.state.email});
+  //   axios.post(`${ROOT_URL}/users/info`, {email: this.state.email}).then((response) => {
+  //     console.log(response.data);
+  //     // id: response.data.id;
+  //     if (response.data.resettingPassword){
+  //       this.props.navigation.navigate("changePassword");
+  //     }
+  //     else{
+  //       alert("Oops. looks like you haven't verified your email yet.");
+  //     }
+  //   }).catch((error) => {
+  //     console.log("Resetting Password failed2. Try again");
+  //   });
+  // }
 
   passwordReset = (fields) => {
     console.log(fields);
-    axios.post(`${ROOT_URL}/users/:${id}`, fields).then((response) => {
+    axios.put(`${ROOT_URL}/users/:${id}`, fields).then((response) => {
       console.log(response.data);
       this.setState({ authenticated: true});
     }).catch((error) => {
@@ -176,8 +176,8 @@ class App extends Component {
 
               <Stack.Screen
                 name="ForgotPasswordVerification"
-                children={() => <ForgotPasswordVerification forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
               >
+                {props => <ForgotPasswordVerification {...props} email={this.state.email} forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
               </Stack.Screen>
 
               <Stack.Screen

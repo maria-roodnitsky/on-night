@@ -67,6 +67,7 @@ class ForgotPw extends Component {
 
   onEmailChange = (event) => {
     this.setState({email: event});
+    this.props.changeEmail(event);
   }
 
   forgotPwEmail = () => {

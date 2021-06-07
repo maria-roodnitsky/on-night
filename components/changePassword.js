@@ -122,7 +122,6 @@ class ChangePassword extends Component {
             >
               <ScrollView style={styles.container}>
                 <Text style={styles.heading}> New Password</Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 
                   secureTextEntry={true}
