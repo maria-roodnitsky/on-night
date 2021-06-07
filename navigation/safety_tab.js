@@ -12,7 +12,6 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Safety from '../components/safety';
-import StudentSearch from '../components/student_search';
 import { withTheme } from 'react-native-elements';
 
 const Stack = createStackNavigator();
@@ -28,7 +27,7 @@ const SafetyTab = (props) => {
       <Stack.Navigator>
         <Stack.Screen
           name="Search"
-          children={() => <StudentSearch token={props.token}/>}
+          children={() => <Safety />}
           options={{
               title: 'Alcohol Safety and Prevention',
               headerStyle: {
