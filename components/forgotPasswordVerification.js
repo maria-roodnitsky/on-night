@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions } from 'react-native';
-
+import forgotPasswordEmailVerification from '../App';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -56,7 +56,6 @@ class forgotPasswordVerification extends Component {
   accountVerified = () => {
       const fields = { email: this.state.email};
       this.props.forgotPasswordEmailVerification(fields);
-      this.props.navigation.navigate("changePassword");
   }
 
   render() {

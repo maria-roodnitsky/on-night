@@ -7,6 +7,7 @@ import signup from '../App';
 import PasswordInputText from 'react-native-hide-show-password-input';
 import { Icon } from 'react-native-elements';
 import TextBox from 'react-native-password-eye'; 
+import passwordReset from '../App';
 
 const styles = StyleSheet.create({
   container: {
@@ -120,7 +121,7 @@ class changePassword extends Component {
               style={{ flex: 1 }}
             >
               <ScrollView style={styles.container}>
-                <Text style={styles.heading}> Sign Up</Text>
+                <Text style={styles.heading}> New Password</Text>
                 <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 

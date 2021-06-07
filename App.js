@@ -14,6 +14,7 @@ import SignUp from './components/signup';
 import Verification from './components/verification';
 import ForgotPw from './components/forgot_pw'
 import forgotPasswordVerification from './components/forgotPasswordVerification';
+import changePassword from './components/changePassword';
 
 // disable really annoying in app warnings
 // console.disableYellowBox = true;
@@ -99,6 +100,32 @@ class App extends Component {
       console.log("Resetting Password failed. Try again");
     });
   }
+
+  forgotPasswordEmailVerification = (fields) => {
+    console.log(fields);
+    axios.post(`${ROOT_URL}/reset/sendemail`, fields).then((response) => {
+      console.log(response.data);
+      if (response.data){
+        this.props.navigation.navigate("changePassword");
+      }
+      else{
+        alert("Oops. looks like you haven't verified your email yet.");
+      }
+    }).catch((error) => {
+      console.log("Resetting Password failed. Try again");
+    });
+  }
+
+  passwordReset = (fields) => {
+    console.log(fields);
+    axios.post(`${ROOT_URL}/reset/sendemail`, fields).then((response) => {
+      console.log(response.data);
+      this.setState({ authenticated: true});
+    }).catch((error) => {
+      console.log("Resetting Password failed. Try again");
+    });
+  }
+
 
   render () {
     if (!this.state.fontsLoaded) {
