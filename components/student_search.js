@@ -12,8 +12,6 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -65,7 +63,6 @@ class StudentSearch extends Component {
       isLoading: true,
       dataSource: [],
       studentQuery: 'Will',
-      users: [],
       userEmails: [],
       students: [],
     };
@@ -98,16 +95,11 @@ class StudentSearch extends Component {
   }
 
   fetchUsers() {
-    axios.get(`${ROOT_URL}/users`, {headers: {'authorization': this.props.token}}).then((response) => {
-        this.setState({users: response.data});
-        let userEmails = [];
-        for (const user of response.data) {
+      const userEmails = [];
+        for (const user of this.props.users) {
             userEmails.push(user.email);
         }
         this.setState({userEmails});
-    }).catch((error) => {
-        console.log(error);
-    })
   }
 
 

@@ -105,23 +105,23 @@ class SignUp extends Component {
     }
 
     onfirstNameChange = (event) => {
-        this.setState( {firstName: event });
-      }
+      this.setState( {firstName: event });
+    }
     onlastNameChange = (event) => {
-        this.setState({ lastName: event });
-      }
+      this.setState({ lastName: event });
+    }
     onclassYearChange = (event) => {
-        this.setState({ classYear: event });
-      }
+       this.setState({ classYear: event });
+    }
     onEmailChange = (event) => {
-        this.setState({ email: event });
-      }
+       this.setState({ email: event });
+     }
     onPasswordChange = (event) => {
-        this.setState({ password: event });
-      }
+      this.setState({ password: event });
+    }
     onConfirmPasswordChange = (event) => {
-        this.setState({ confirmPassword: event });
-      }
+      this.setState({ confirmPassword: event });
+    }
 
     signedUp = () => {
         this.props.changeEmail(this.state.email);

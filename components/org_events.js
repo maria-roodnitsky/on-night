@@ -9,8 +9,6 @@ import { Icon } from 'react-native-elements';
 import TextBox from 'react-native-password-eye'; 
 import axios from 'axios';
 
-const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
-
 const styles = StyleSheet.create({
   container: {
       paddingTop: 50,
@@ -77,13 +75,14 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignSelf: 'center',
-    backgroundColor: 'rgba(255,255,255,0.5)',
-    width: '90%',
-    height: 100,
+    backgroundColor: '#A9469F',
+    width: '50%',
     padding: 10,
-    borderRadius: 10, 
+    borderRadius: 20, 
     margin: 10,
     opacity: .8,
+    borderWidth: 2,
+    borderColor:'#A9469F',
   },
   secondaryButtonContainer: {
     alignSelf: 'center',
@@ -98,56 +97,71 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    color: 'black',
+    color: 'white',
     fontFamily: 'Open-Sans', 
-    textTransform: "uppercase",
-    fontSize: 20,
-    marginTop: 25,
+    textTransform: "uppercase"
   },
   contents: {
       width: '90%',
       backgroundColor: 'rgba(255,255,255,0.5)',
       borderRadius: 10,
+      margin: 10,
       marginLeft: '5%',
   },
   footer: {
     marginTop: 200,
     alignSelf: "center",
+  },
+  eventsFor: {
+    fontSize: 17,
+    margin: 10,
+    marginTop: 20,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+    lineHeight: 30,
+    textAlign: 'center',
+  },
+  eventTitle: {
+    fontSize: 20,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'black',
+    margin: 10,
+    textAlignVertical: 'center',
+  },
+  eventDescription: {
+    fontSize: 15,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'black',
+    textAlignVertical: 'center',
+    marginLeft: 10,
+    margin: 5,
   }
 });
 
-class AdminPortal extends Component {
+class OrgEvents extends Component {
     constructor(props) {
       super(props);
       this.state = {
-
+        events: null,
       };
     }
 
-    renderPortalContents = () => {
-        if (this.props.user.house != "none") {
-            return (
-                <View>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("Events")}}>
-                        <Text style={styles.buttonText}>Events</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("Members")}}>
-                        <Text style={styles.buttonText}>Members</Text>
-                    </TouchableOpacity>
-                </View>
-            );
-        } else {
-            return (
-                <View style={styles.contents}>
-                    <Text style={styles.contentsTitle}>To edit your organization, please have your current admin add you as a member</Text>
-                </View>
-            );
-        }
+    componentDidMount() {
+        this.setEvents();
     }
 
+    setEvents = () => {
+        const events = []
+        for (const event of this.props.events) {
+            if (event.location == this.props.user.house) {
+                events.push(event);
+            }
+        }
+        this.setState({events});
+    }
 
-    renderPortal = () => { 
-        if (this.props.user == null) {
+    renderEvents = () => { 
+        if (this.state.events == null) {
             return (
                 <View style={styles.container}>
                     <Text style={styles.heading}> Loading</Text>
@@ -156,9 +170,23 @@ class AdminPortal extends Component {
         } else {
             return (
                 <View>
-                    <Text style={styles.title}>Welcome to the admin portal, the place for those in charge of a greek house on OnNight! Here, you can edit membership and events of our organization.</Text>
-                    <Text style={styles.house}> Your Organization: {this.props.user.house}</Text>
-                    {this.renderPortalContents()}
+                    <Text style={styles.eventsFor}>Events for: {this.props.user.house}</Text>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("NewEvent")}}>
+                        <Text style={styles.buttonText}>Add New Event</Text>
+                    </TouchableOpacity>
+                    {/* fix scrolling */}
+                    <ScrollView>
+                        {this.state.events.map((event) => {
+                            return (
+                                <View key={event.title} style={styles.contents}>
+                                    <Text style={styles.eventTitle}>{event.title}</Text>
+                                    <Text style={styles.eventDescription}>{event.time}</Text>
+                                    <Text style={styles.eventDescription}>{event.description}</Text>
+                                </View>
+                            );
+                        })}
+                        <View style={{marginTop: 100}}/>
+                    </ScrollView>
                 </View>
             );
         }
@@ -168,11 +196,11 @@ class AdminPortal extends Component {
         return (
             <SafeAreaView>
               <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-                {this.renderPortal()}
+                {this.renderEvents()}
               </ImageBackground>
             </SafeAreaView>
         );
     }
   }
 
-export default AdminPortal;
+export default OrgEvents;
