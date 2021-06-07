@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions, TextInput} from 'react-native';
-import fotgotPassword from '../App';
+import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-  },
-
-  input: {
-    height: 45,
-    margin: 20,
-    backgroundColor: '#ffffff80',
-    borderRadius: 8, 
-    textAlign: 'left',
-    paddingLeft: 16,
-    fontFamily: 'Open-Sans',
-    textTransform: "uppercase"
   },
 
   backgroundImg: {
@@ -53,7 +41,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class ForgotPw extends Component {
+class forgotPasswordVerification extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,38 +50,24 @@ class ForgotPw extends Component {
   }
 
   static navigationOptions = {
-    title: 'ForgotPw',
+    title: 'Verification',
   };
 
-  onEmailChange = (event) => {
-    this.setState({email: event});
-  }
-
-  forgotPwEmail = () => {
-    if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
-
-      Alert.alert(
-        'Invalid Email',
-        'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
-      )
-    }
-    else{
+  activated = () => {
       const fields = { email: this.state.email};
-      this.props.forgotPassword(fields);
-      this.props.navigation.navigate("forgotPasswordVerification");
-    }
+      this.props.activate(fields);
+      this.props.navigation.navigate("changePassword");
   }
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-        <Text>Forgot Password?</Text>
+        <Text>Password Reset</Text>
         <Text>
-        Hey, we get it! We all forget out passwords sometimes.
-          Let us know how we can reach you so we can reset it for you.         </Text>
-        <TextInput style={styles.input} onChangeText={e => this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
-        <TouchableOpacity onPress={this.forgotPwEmail}>
+        You should be receiving a temporary password from us soon. If you do not receive an email from us, please try again with your official (no aliases please!) Dartmouth email. 
+        </Text>
+        <TouchableOpacity onPress={this.activated}>
               <Text style={styles.buttonText}>I have Confirmed the Email</Text>
         </TouchableOpacity>
         </ImageBackground>
@@ -103,4 +77,4 @@ class ForgotPw extends Component {
 }
 
 
-export default ForgotPw;
+export default forgotPasswordVerification;

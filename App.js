@@ -13,6 +13,7 @@ import SignIn from './components/signin';
 import SignUp from './components/signup';
 import Verification from './components/verification';
 import ForgotPw from './components/forgot_pw'
+import forgotPasswordVerification from './components/forgotPasswordVerification';
 
 // disable really annoying in app warnings
 // console.disableYellowBox = true;
@@ -90,6 +91,15 @@ class App extends Component {
     });
   }
 
+  forgotPassword = (fields) => {
+    console.log(fields);
+    axios.post(`${ROOT_URL}/reset/sendemail`, fields).then((response) => {
+      console.log(response.data);
+    }).catch((error) => {
+      console.log("Resetting Password failed. Try again");
+    });
+  }
+
   render () {
     if (!this.state.fontsLoaded) {
       return (
@@ -129,6 +139,13 @@ class App extends Component {
                 {/* {return <SignIn signin={this.signin}/>} */}
                 {props => <SignIn {...props} signin={this.signin}/>}
               </Stack.Screen>
+                            
+              <Stack.Screen
+                name="ForgotPw"
+              >
+                {props => <ForgotPw {...props} forgotPassword={this.forgotPassword}/>}
+              </Stack.Screen>
+
               <Stack.Screen
                 name="SignUp"
                 options={{ 
@@ -149,10 +166,7 @@ class App extends Component {
               >
                 {/* {props => <Verification {...props} activated={this.activate}/>} */}
                 </Stack.Screen>
-              <Stack.Screen
-                name="ForgotPW"
-                component={ForgotPw}
-              />
+
             </Stack.Navigator>
           </NavigationContainer>
         )

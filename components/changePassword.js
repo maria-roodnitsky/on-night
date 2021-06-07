@@ -8,7 +8,6 @@ import PasswordInputText from 'react-native-hide-show-password-input';
 import { Icon } from 'react-native-elements';
 import TextBox from 'react-native-password-eye'; 
 
-
 const styles = StyleSheet.create({
   container: {
   },
@@ -45,7 +44,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     margin: 25,
     color: 'white',
-    fontFamily: 'Comfortaa-Regular'
+    fontFamily: 'Comfortaa-Regular',
+    textAlign: 'center'
   },
   backgroundImg: {
     width: '100%',
@@ -78,79 +78,82 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Open-Sans', 
     textTransform: "uppercase"
-  },
-  footer: {
-    marginTop: 200,
-    alignSelf: "center",
   }
 });
 
-class SignIn extends Component {
+class changePassword extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        email: '',
         password: '',
+        confirmPassword: '',
       };
     }
 
-    onEmailChange = (event) => {
-      this.setState({ email: event });
-    }
+    static navigationOptions = {
+        title: 'changePassword',
+    };
 
     onPasswordChange = (event) => {
-      this.setState({ password: event });
+        this.setState({ password: event });
+      }
+    onConfirmPasswordChange = (event) => {
+        this.setState({ confirmPassword: event });
+      }
+
+    passwordChanged = () => {
+        if (this.state.password != this.state.confirmPassword){
+          Alert.alert(
+            'Passwords do not match'
+        )
+        }
+        else {
+          const fields = { password: this.state.password};
+          this.props.passwordReset(fields);
+        }
     }
 
-    signedIn = () => {
-      if (this.state.password == '' || this.state.email == ''){
-        Alert.alert(
-          'Fields cannnot be empty.'
-      )
-      }
-      else{
-        const fields = { email: this.state.email, password: this.state.password };
-        this.props.signin(fields);
-      }
-    }
-
-    renderSignIn = () => { 
+    renderSignUp = () => { 
         return (
-          <View style={styles.container}>
-            <Text style={styles.heading}> Sign In</Text>
-            <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="EMAIL"/>
-            {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true} placeholder="PASSWORD"/> */}
-            <TextBox
-              onChangeText={e=>this.onPasswordChange(e)} 
-              placeholder="PASSWORD"
-              secureTextEntry={true}
-              containerStyles={[styles.input]}
-            />
-            {/* <PasswordInputText style={styles.input2} onChangeText={e=>this.onPasswordChange(e)} /> */}
+            <KeyboardAvoidingView
+              behavior={Platform.OS === "ios" ? "padding" : "height"}
+              style={{ flex: 1 }}
+            >
+              <ScrollView style={styles.container}>
+                <Text style={styles.heading}> Sign Up</Text>
+                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
+                <TextBox
+                  onChangeText={e=>this.onPasswordChange(e)} 
+                  secureTextEntry={true}
+                  containerStyles={[styles.input]}
+                  placeholder="PASSWORD"
+                />
+                <TextBox
+                  onChangeText={e=>this.onConfirmPasswordChange(e)} 
+                  secureTextEntry={true}
+                  containerStyles={[styles.input]}
+                  placeholder="CONFIRM PASSWORD"
+                />
+                <TouchableOpacity style={styles.buttonContainer} onPress={this.passwordChanged}>
 
-            {/* <Button title="Sign In NOW" onPress={this.signedIn} backgroundColor="red"/> */}
-            <TouchableOpacity style={styles.buttonContainer} onPress={this.signedIn}>
-              <Text style={styles.buttonText}>Sign In</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.secondaryButtonContainer} onPress={() => {this.props.navigation.navigate("SignUp")}}>
-              <Text style={styles.buttonText}>Sign Up</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("ForgotPw")}}>
-              <Text style={[styles.buttonText]}>Forgot your password?</Text>
-            </TouchableOpacity>
-          </View>
+                  <Text style={styles.buttonText}>Reset Password</Text>
+                </TouchableOpacity>
+                <View style={{marginTop: 40}}/>
+              </ScrollView>
+            </KeyboardAvoidingView>
         )
     }
-  
+
+    
     render () {
         return (
             <SafeAreaView>
               <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-                {this.renderSignIn()}
+                {this.renderSignUp()}
               </ImageBackground>
             </SafeAreaView>
         );
     }
   }
 
-export default SignIn;
+export default SignUp;
