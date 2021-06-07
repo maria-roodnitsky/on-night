@@ -70,6 +70,7 @@ class ForgotPw extends Component {
   }
 
   forgotPwEmail = () => {
+    let pCount = 0;
     if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
 
       Alert.alert(
@@ -80,7 +81,7 @@ class ForgotPw extends Component {
     else{
       const fields = { email: this.state.email};
       this.props.forgotPassword(fields);
-      this.props.navigation.navigate("forgotPasswordVerification");
+      this.props.navigation.navigate("ForgotPasswordVerification");
     }
   }
 
@@ -94,7 +95,7 @@ class ForgotPw extends Component {
           Let us know how we can reach you so we can reset it for you.         </Text>
         <TextInput style={styles.input} onChangeText={e => this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
         <TouchableOpacity onPress={this.forgotPwEmail}>
-              <Text style={styles.buttonText}>I have Confirmed the Email</Text>
+              <Text style={styles.buttonText}>Reset Password</Text>
         </TouchableOpacity>
         </ImageBackground>
       </SafeAreaView>

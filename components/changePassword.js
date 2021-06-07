@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class changePassword extends Component {
+class ChangePassword extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -157,4 +157,4 @@ class changePassword extends Component {
     }
   }
 
-export default changePassword;
+export default ChangePassword;

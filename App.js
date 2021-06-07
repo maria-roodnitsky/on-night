@@ -13,8 +13,8 @@ import SignIn from './components/signin';
 import SignUp from './components/signup';
 import Verification from './components/verification';
 import ForgotPw from './components/forgot_pw'
-import forgotPasswordVerification from './components/forgotPasswordVerification';
-import changePassword from './components/changePassword';
+import ForgotPasswordVerification from './components/forgotPasswordVerification';
+import ChangePassword from './components/changePassword';
 
 // disable really annoying in app warnings
 // console.disableYellowBox = true;
@@ -80,7 +80,6 @@ class App extends Component {
 
   activate = (fields) => {
     console.log(fields);
-
     axios.post(`${ROOT_URL}/activate`, {email: this.state.email}).then((response) => {
       console.log(response.data);
       if (response.data.activated) {
@@ -98,13 +97,13 @@ class App extends Component {
     axios.post(`${ROOT_URL}/reset/sendemail`, fields).then((response) => {
       console.log(response.data);
     }).catch((error) => {
-      console.log("Resetting Password failed. Try again");
+      console.log("Resetting Password failed1. Try again");
     });
   }
 
   forgotPasswordEmailVerification = (fields) => {
-    console.log(fields);
-    axios.get(`${ROOT_URL}/users/info`, fields).then((response) => {
+    console.log({email: this.state.email});
+    axios.get(`${ROOT_URL}/users/info`, {email: this.state.email}).then((response) => {
       console.log(response.data);
       id: response.data.id;
       if (response.data.resettingPassword){
@@ -114,7 +113,7 @@ class App extends Component {
         alert("Oops. looks like you haven't verified your email yet.");
       }
     }).catch((error) => {
-      console.log("Resetting Password failed. Try again");
+      console.log("Resetting Password failed2. Try again");
     });
   }
 
@@ -124,7 +123,7 @@ class App extends Component {
       console.log(response.data);
       this.setState({ authenticated: true});
     }).catch((error) => {
-      console.log("Resetting Password failed. Try again");
+      console.log("Resetting Password failed3. Try again");
     });
   }
 
@@ -172,18 +171,18 @@ class App extends Component {
               <Stack.Screen
                 name="ForgotPw"
               >
-                {props => <ForgotPw {...props} forgotPassword={this.forgotPassword}/>}
+                {props => <ForgotPw {...props} forgotPassword={this.forgotPassword} changeEmail={this.changeEmail}/>}
               </Stack.Screen>
 
               <Stack.Screen
-                name="forgotPasswordVerification"
-                children={() => <forgotPasswordVerification forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
+                name="ForgotPasswordVerification"
+                children={() => <ForgotPasswordVerification forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
               >
               </Stack.Screen>
 
               <Stack.Screen
                 name="changePassword"
-                children={() => <changePassword passwordReset={this.passwordReset}/>}
+                children={() => <ChangePassword passwordReset={this.passwordReset}/>}
               >
               </Stack.Screen>
 

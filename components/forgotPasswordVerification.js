@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class forgotPasswordVerification extends Component {
+class ForgotPasswordVerification extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,7 +50,7 @@ class forgotPasswordVerification extends Component {
   }
 
   static navigationOptions = {
-    title: 'forgotPasswordVerification',
+    title: 'ForgotPasswordVerification',
   };
 
   accountVerified = () => {
@@ -76,4 +76,4 @@ class forgotPasswordVerification extends Component {
 }
 
 
-export default forgotPasswordVerification;
+export default ForgotPasswordVerification;
