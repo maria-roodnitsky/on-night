@@ -1,13 +1,15 @@
 import color from 'color';
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
-import { Text, View, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native';
+import { Text, View, Image, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native';
 import signin from '../App';
 import signup from '../App';
 import PasswordInputText from 'react-native-hide-show-password-input';
 import { Icon } from 'react-native-elements';
 import TextBox from 'react-native-password-eye'; 
 import axios from 'axios';
+
+const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
 
 const styles = StyleSheet.create({
   container: {
@@ -102,11 +104,14 @@ const styles = StyleSheet.create({
     textTransform: "uppercase"
   },
   contents: {
-      width: '90%',
-      backgroundColor: 'rgba(255,255,255,0.5)',
-      borderRadius: 10,
-      margin: 10,
-      marginLeft: '5%',
+    width: '90%',
+    backgroundColor: 'rgba(255,255,255,0.5)',
+    borderRadius: 10,
+    margin: 10,
+    marginLeft: '5%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   footer: {
     marginTop: 200,
@@ -127,6 +132,11 @@ const styles = StyleSheet.create({
     color: 'black',
     margin: 10,
     textAlignVertical: 'center',
+  },
+  delete: {
+    width: 25,
+    height: 30,
+    margin: 6.5,
   },
   eventDescription: {
     fontSize: 15,
@@ -160,6 +170,14 @@ class OrgEvents extends Component {
         this.setState({events});
     }
 
+    deleteEvent = (event) => {
+        axios.delete(`${ROOT_URL}/events/${event._id}`, {headers: {'authorization': this.props.token}}).then((response) => {
+            console.log('Event Deleted!');
+          }).catch((error) => {
+            alert('Event not deleted');
+          });
+    }
+
     renderEvents = () => { 
         if (this.state.events == null) {
             return (
@@ -179,9 +197,14 @@ class OrgEvents extends Component {
                         {this.state.events.map((event) => {
                             return (
                                 <View key={event.title} style={styles.contents}>
-                                    <Text style={styles.eventTitle}>{event.title}</Text>
-                                    <Text style={styles.eventDescription}>{event.time}</Text>
-                                    <Text style={styles.eventDescription}>{event.description}</Text>
+                                    <View style={styles.contentsWords}>
+                                        <Text style={styles.eventTitle}>{event.title}</Text>
+                                        <Text style={styles.eventDescription}>{event.time}</Text>
+                                        <Text style={styles.eventDescription}>{event.description}</Text>
+                                    </View>
+                                    <TouchableOpacity onPress={() => {this.deleteEvent(event)}}>
+                                        <Image source={require('../img/delete.png')} style={styles.delete}/>
+                                    </TouchableOpacity>
                                 </View>
                             );
                         })}
