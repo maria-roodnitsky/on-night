@@ -46,7 +46,19 @@ const Schedule: React.FC = (props) => {
       const eventsList = response.data;
       const eventCal = {};
       for (const event of eventsList) {
-        const dateStr = event.year.toString() + "-" + event.month.toString() + "-" + event.day.toString()
+        let year = event.year.toString();
+        let month = event.month.toString();
+        let day = event.day.toString();
+        if (day.length == 1) {
+          day = "0" + day
+        }
+        if (month.length == 1) {
+          month = "0" + month
+        }
+        console.log(day);
+        console.log(month);
+        console.log(year);
+        const dateStr = year + "-" + month + "-" + day
         const info = {location: event.location, time: event.time, title: event.title, description: event.description}
         if (eventCal.hasOwnProperty(dateStr)) {
           eventCal[dateStr].push(info)
@@ -118,8 +130,7 @@ const Schedule: React.FC = (props) => {
             dayTextColor: 'white',
             monthTextColor: 'white',
 
-}}
-      />
+}}    />
     </View>
   );
 };
