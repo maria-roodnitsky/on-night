@@ -113,7 +113,7 @@ class changePassword extends Component {
         }
     }
 
-    renderSignUp = () => { 
+    renderChangePassword = () => { 
         return (
             <KeyboardAvoidingView
               behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -149,11 +149,11 @@ class changePassword extends Component {
         return (
             <SafeAreaView>
               <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-                {this.renderSignUp()}
+                {this.renderChangePassword()}
               </ImageBackground>
             </SafeAreaView>
         );
     }
   }
 
-export default SignUp;
+export default changePassword;

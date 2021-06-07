@@ -50,12 +50,12 @@ class forgotPasswordVerification extends Component {
   }
 
   static navigationOptions = {
-    title: 'Verification',
+    title: 'forgotPasswordVerification',
   };
 
-  activated = () => {
+  accountVerified = () => {
       const fields = { email: this.state.email};
-      this.props.activate(fields);
+      this.props.forgotPasswordEmailVerification(fields);
       this.props.navigation.navigate("changePassword");
   }
 
@@ -65,9 +65,9 @@ class forgotPasswordVerification extends Component {
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
         <Text>Password Reset</Text>
         <Text>
-        You should be receiving a temporary password from us soon. If you do not receive an email from us, please try again with your official (no aliases please!) Dartmouth email. 
+        You should be receiving a confirmation email from us soon. If you do not receive an email from us, please try again with your official (no aliases please!) Dartmouth email. 
         </Text>
-        <TouchableOpacity onPress={this.activated}>
+        <TouchableOpacity onPress={this.accountVerified}>
               <Text style={styles.buttonText}>I have Confirmed the Email</Text>
         </TouchableOpacity>
         </ImageBackground>

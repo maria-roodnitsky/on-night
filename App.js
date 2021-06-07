@@ -147,6 +147,18 @@ class App extends Component {
               </Stack.Screen>
 
               <Stack.Screen
+                name="forgotPasswordVerification"
+                children={() => <forgotPasswordVerification forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
+              >
+              </Stack.Screen>
+
+              <Stack.Screen
+                name="changePassword"
+                children={() => <changePassword passwordReset={this.passwordReset}/>}
+              >
+              </Stack.Screen>
+
+              <Stack.Screen
                 name="SignUp"
                 options={{ 
                  title: '',
