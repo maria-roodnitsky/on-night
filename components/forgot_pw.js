@@ -73,7 +73,7 @@ class ForgotPw extends Component {
     let pCount = 0;
     if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
 
-      Alert.alert(
+      alert(
         'Invalid Email',
         'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
       )
