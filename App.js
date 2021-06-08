@@ -63,6 +63,10 @@ class App extends Component {
     });
   }
 
+  logout = () => {
+    this.setState({token: '', authenticated: false});
+  }
+
   signin = (fields) => {
     console.log(fields);
     axios.post(`${ROOT_URL}/signin`, fields).then((response) => {
@@ -151,7 +155,7 @@ class App extends Component {
       );
     } else {
       if (this.state.authenticated) {
-        return <MainTabBar token={this.state.token} email={this.state.email}/>
+        return <MainTabBar token={this.state.token} email={this.state.email} logout={this.logout}/>
       } else {
         // return <Landing signup={this.signup} signin={this.signin}/>
         return (

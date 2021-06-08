@@ -48,7 +48,7 @@ const MainTabBar = (props) => {
         >
           {/* A way to pass props like information to react native components found at https://stackoverflow.com/questions/60439210/how-to-pass-props-to-screen-component-with-a-tab-navigator */}
           <Tab.Screen name="Events" children={() => <EventsTab token={props.token}/>} />
-          <Tab.Screen name="Profile" children={() => <ProfileTab token={props.token} email={props.email}/>} />
+          <Tab.Screen name="Profile" children={() => <ProfileTab token={props.token} email={props.email} logout={props.logout}/>} />
           <Tab.Screen name="Alcohol Safety" children={() => <SafetyTab token={props.token}/>} />
         </Tab.Navigator>
       </NavigationContainer>

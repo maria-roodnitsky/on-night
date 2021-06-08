@@ -65,6 +65,43 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor:'#A9469F',
   },
+  buttonContainer2: {
+    alignSelf: 'center',
+    backgroundColor: '#A9469F',
+    width: '43%',
+    padding: 10,
+    borderRadius: 10, 
+    margin: '1%',
+    opacity: .8,
+    borderWidth: 2,
+    borderColor:'#A9469F',
+  },
+  buttonContainer3: {
+    alignSelf: 'center',
+    backgroundColor: '#A9469F',
+    width: '22%',
+    padding: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    borderRadius: 10, 
+    margin: '1%',
+    opacity: .8,
+    borderWidth: 2,
+    borderColor:'#A9469F',
+  },
+  buttonContainer4: {
+    alignSelf: 'center',
+    backgroundColor: 'rgba(180,180,180,0.4)',
+    width: '22%',
+    padding: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    borderRadius: 10, 
+    margin: '1%',
+    opacity: .8,
+    borderWidth: 2,
+    borderColor:'rgb(150,150,150)',
+  },
   secondaryButtonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
@@ -194,11 +231,20 @@ class Profile extends Component {
                     <Text style={[styles.title, {fontSize: 15, marginLeft: 20}]}>{this.props.user.house}</Text>
                     <Text style={[styles.buttonText, {alignSelf: "flex-start", marginLeft: 20}]}>Email</Text>
                     <Text style={[styles.title, {fontSize: 15, marginLeft: 20}]}>{this.props.user.email}</Text>
-                    <TouchableOpacity style={[styles.buttonContainer, {marginTop: 175}]} onPress={() => {this.props.navigation.navigate("EditProfile")}}>
-                        <Text style={styles.buttonText}>Edit</Text>
-                    </TouchableOpacity>
+                    <View style={{display: 'flex', flexDirection: 'row', justifyContent:'center', marginTop: 175}}>
+                        <TouchableOpacity style={[styles.buttonContainer2]} onPress={() => {this.props.navigation.navigate("EditProfile")}}>
+                            <Text style={styles.buttonText}>Edit</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.buttonContainer3]} onPress={() => {this.props.reRender()}}>
+                            <Text style={styles.buttonText}>Refresh</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.buttonContainer4]} onPress={() => {this.props.logout()}}>
+                            <Text style={styles.buttonText}>Logout</Text>
+                        </TouchableOpacity>
+                    </View>
                     {this.renderAdmin()}
                     </View>
+
               )
         }
     }

@@ -19,6 +19,8 @@ const Schedule: React.FC<ScheduleProps> = (props) => {
   const [items, setItems] = useState({});
   const [events, setEvents] = useState({});
 
+  const today = new Date().toISOString().slice(0,10);
+
   const loadItems = (day) => {
     setTimeout(() => {
       for (let i = -15; i < 85; i++) {
@@ -171,7 +173,7 @@ const Schedule: React.FC<ScheduleProps> = (props) => {
           <Agenda
             items={events}
             loadItemsForMonth={loadEvents}
-            selected={'2021-06-02'}
+            selected={today}
             renderItem={renderEvent}
             theme={{
                 selectedDayBackgroundColor: '#A9469F60',
