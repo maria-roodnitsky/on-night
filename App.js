@@ -17,7 +17,7 @@ import ForgotPasswordVerification from './components/forgotPasswordVerification'
 import ChangePassword from './components/changePassword';
 
 // disable really annoying in app warnings
-// console.disableYellowBox = true;
+console.disableYellowBox = true;
 // LogBox.ignoreAllLogs(value)
 
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';

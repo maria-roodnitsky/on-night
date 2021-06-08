@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, Text, SafeAreaView, ImageBackground, Dimensions} from 'react-native';
 import {Agenda} from 'react-native-calendars';
 import {Card, Avatar} from 'react-native-paper';
 import axios from 'axios';
+
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
-
-
-
 
 const timeToString = (time) => {
   const date = new Date(time);
@@ -93,7 +91,7 @@ const Schedule: React.FC = (props) => {
   const renderEvent = (event) => {
     return (
       <TouchableOpacity style={{marginRight: 10, marginTop: 17}}>
-        <Card>
+        <Card style={{backgroundColor: 'rgba(255,255,255,0.5)'}}>
           <Card.Content>
             <View
               style={{
@@ -112,23 +110,26 @@ const Schedule: React.FC = (props) => {
   }
 
   return (
-    <View style={{flex: 1}}>
-      <Agenda
-        items={events}
-        loadItemsForMonth={loadEvents}
-        selected={'2021-06-02'}
-        renderItem={renderEvent}
-        theme={{
-            selectedDayBackgroundColor: '#A9469F60',
-            backgroundColor: '#32315C',
-            calendarBackground: '#32315C',
-            agendaKnobColor: 'white',
-            selectedDotColor: '#ffffff',
-            dayTextColor: 'white',
-            monthTextColor: 'white',
-
-}}    />
-    </View>
+    <SafeAreaView>
+      <ImageBackground source={require('../img/background.jpg')} style={{width: '100%',height: Dimensions.get("window").height,}}>
+        <View style={{flex: 1}}>
+          <Agenda
+            items={events}
+            loadItemsForMonth={loadEvents}
+            selected={'2021-06-02'}
+            renderItem={renderEvent}
+            theme={{
+                selectedDayBackgroundColor: '#A9469F60',
+                backgroundColor: 'transparent',
+                calendarBackground: '#32315C',
+                agendaKnobColor: 'white',
+                selectedDotColor: '#ffffff',
+                dayTextColor: 'white',
+                monthTextColor: 'white',
+            }}/>
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
   );
 };
 
