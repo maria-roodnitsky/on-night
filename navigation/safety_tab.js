@@ -28,7 +28,7 @@ const SafetyTab = (props) => {
         <Stack.Screen
           name="Search"
           children={() => <Safety />}
-          options={{title: 'Alcohol Safety and Prevention',
+          options={{title: 'Responsible Drinking',
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
