@@ -142,9 +142,13 @@ class ProfileTab extends Component {
   renderTab = () => {
     if ((this.state.users == null || this.state.events == null || this.state.user == null) && this.state.problemLoading == false) {
       return (
-        <View style={styles.container}>
+        <SafeAreaView>
+              <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
+              <View style={styles.container}>
           <Text style={styles.heading}> Loading</Text>
         </View>
+              </ImageBackground>
+            </SafeAreaView>
       );
     } else if ((this.state.users == null || this.state.events == null || this.state.user == null) && this.state.problemLoading == true) {
       return (
@@ -270,7 +274,8 @@ class ProfileTab extends Component {
               textAlign: 'left',
               fontFamily: 'Comfortaa-Regular',
               color: 'white',
-            }}}
+            },
+            }}
           >
             {props => <EditProfile {...props} user={this.state.user} reRender={this.reRender}/>}
           </Stack.Screen>
@@ -280,13 +285,7 @@ class ProfileTab extends Component {
   }
 
   render () {
-    return (
-      <SafeAreaView>
-        <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-          {this.renderTab()}
-        </ImageBackground>
-      </SafeAreaView>
-    );
+    return this.renderTab();
   }
 }
 

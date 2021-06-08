@@ -145,6 +145,9 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     marginLeft: 10,
     margin: 5,
+  },
+  contentsWords: {
+    width: '90%',
   }
 });
 
@@ -209,7 +212,7 @@ class OrgEvents extends Component {
                                 </View>
                             );
                         })}
-                        <View style={{marginTop: 100}}/>
+                        <View style={{marginTop: 50}}/>
                     </ScrollView>
                 </View>
             );

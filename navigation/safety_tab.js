@@ -28,13 +28,19 @@ const SafetyTab = (props) => {
         <Stack.Screen
           name="Search"
           children={() => <Safety />}
-          options={{
-              title: 'Alcohol Safety and Prevention',
-              headerStyle: {
-              backgroundColor: '#A9469F',
-              },
-              headerTintColor: '#fff',
-          }}
+          options={{title: 'Alcohol Safety and Prevention',
+            headerStyle: {
+              backgroundColor: '#1c1d31',
+              opacity: 1,
+              elevation: 0,
+            },
+            headerTitleStyle: {
+              fontSize: 22,
+              textAlign: 'left',
+              fontFamily: 'Comfortaa-Regular',
+              color: 'white',
+            },
+            }}
           />
       </Stack.Navigator>
   );

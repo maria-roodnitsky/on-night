@@ -161,6 +161,7 @@ class Safety extends Component {
           renderItem={({ item }) => { return this.renderSafetyCell(item); }}
           style={styles.listView}
         />
+        <View style={{height: 175}}/>
       </ImageBackground>
     );
   }
@@ -227,8 +228,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#00FFFF10',
   },
   container: {
+    marginTop: 10,
     backgroundColor: '#00FFFF10',
-    marginBottom: 15,
+    marginBottom: 10,
     width: Dimensions.get("window").width - 30,
     alignSelf: 'center', 
     borderRadius: 10,
