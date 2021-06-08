@@ -70,7 +70,7 @@ const Schedule: React.FC = (props) => {
 
   const renderItem = (item) => {
     return (
-      <TouchableOpacity style={{marginRight: 10, marginTop: 17}}>
+      <TouchableOpacity style={{marginRight: 10, marginTop: 17, marginBottom:50}}>
         <Card>
           <Card.Content>
             <View
@@ -90,7 +90,7 @@ const Schedule: React.FC = (props) => {
 
   const renderEvent = (event) => {
     return (
-      <TouchableOpacity style={{marginRight: 10, marginTop: 17}}>
+      <TouchableOpacity style={{marginRight: 10, marginTop: 17, marginBottom:20}}>
         <Card style={{backgroundColor: 'rgba(255,255,255,0.5)'}}>
           <Card.Content>
             <View
@@ -110,9 +110,8 @@ const Schedule: React.FC = (props) => {
   }
 
   return (
-    <SafeAreaView>
       <ImageBackground source={require('../img/background.jpg')} style={{width: '100%',height: Dimensions.get("window").height,}}>
-        <View style={{flex: 1}}>
+        <View style={{flex: .8}}>
           <Agenda
             items={events}
             loadItemsForMonth={loadEvents}
@@ -129,7 +128,6 @@ const Schedule: React.FC = (props) => {
             }}/>
         </View>
       </ImageBackground>
-    </SafeAreaView>
   );
 };
 
