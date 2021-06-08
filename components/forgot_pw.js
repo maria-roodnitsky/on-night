@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
-    width: '50%',
+    width: '75%',
     padding: 10,
     borderRadius: 20, 
     margin: 10,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   secondaryButtonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
-    width: '50%',
+    width: '75%',
     padding: 10,
     borderRadius: 20, 
     margin: 10,
@@ -127,13 +127,13 @@ class ForgotPw extends Component {
       <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
         <Text style={styles.heading}>Forgot Password?</Text>
-        <Text style={styles.body}>
+        <Text style={[styles.body, {fontSize: 15}]}>
         Hey, we get it! We all forget our passwords sometimes.
-          Let us know how we can reach you so we can reset it for you.         </Text>
-        <TextInput style={styles.input} onChangeText={e => this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
+          To which Dartmouth email should we send your magical reset link?        </Text>
+        <TextInput style={[styles.input, {marginTop: 50}]} onChangeText={e => this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL" placeholderTextColor="#ffffff" autoCapitalize='none'/>
         {this.state.invalidEmail && <Text style={[styles.buttonTextError]} > Invalid Email! Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu </Text>}
         {this.state.emptyFields && <Text style={[styles.buttonTextError]} > Sorry! Any field cannot be empty. </Text>}
-        <TouchableOpacity style={styles.buttonContainer} onPress={this.forgotPwEmail}>
+        <TouchableOpacity style={[styles.buttonContainer, {marginTop: 40}]} onPress={this.forgotPwEmail}>
               <Text style={styles.buttonText}>Reset Password</Text>
         </TouchableOpacity>
 
