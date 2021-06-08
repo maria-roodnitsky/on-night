@@ -24,8 +24,10 @@ const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
 
 const getFonts = () => Font.loadAsync({
   'Comfortaa-Regular': require('./assets/fonts/Comfortaa-Regular.ttf'),
-  'Open-Sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+  'Comfortaa-Bold': require('./assets/fonts/Comfortaa-Bold.ttf'),
+  'Open-Sans': require('./assets/fonts/OpenSans-Regular.ttf')
   'IcoMoon': require('./assets/fonts/icomoon.ttf')
+
 });
 
 const Stack = createStackNavigator();
