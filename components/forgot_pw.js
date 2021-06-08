@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
 
   backgroundImg: {
     width: '100%',
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height*1.1,
+    marginTop: -50,
   },
   heading: {
     fontSize: 32,
@@ -116,12 +117,13 @@ class ForgotPw extends Component {
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
         <Text style={styles.heading}>Forgot Password?</Text>
         <Text style={styles.body}>
-        Hey, we get it! We all forget out passwords sometimes.
+        Hey, we get it! We all forget our passwords sometimes.
           Let us know how we can reach you so we can reset it for you.         </Text>
         <TextInput style={styles.input} onChangeText={e => this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
         <TouchableOpacity style={styles.buttonContainer} onPress={this.forgotPwEmail}>
               <Text style={styles.buttonText}>Reset Password</Text>
         </TouchableOpacity>
+
         </ImageBackground>
       </SafeAreaView>
     );

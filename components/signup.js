@@ -10,6 +10,7 @@ import TextBox from 'react-native-password-eye';
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 30,
   },
   input: {
     height: 45,
@@ -49,7 +50,8 @@ const styles = StyleSheet.create({
   },
   backgroundImg: {
     width: '100%',
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height*1.1,
+    marginTop: -30,
   },
   buttonContainer: {
     alignSelf: 'center',

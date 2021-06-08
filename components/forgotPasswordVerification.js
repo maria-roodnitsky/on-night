@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
 
   backgroundImg: {
     width: '100%',
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height*1.1,
+    marginTop: -50,
   },
 
   buttonContainer: {
