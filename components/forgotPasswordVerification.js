@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Dimensions.get("window").height,
   },
+
   buttonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
@@ -24,6 +25,22 @@ const styles = StyleSheet.create({
     opacity: .8,
     borderWidth: 2,
     borderColor:'#A9469F',
+  },
+  heading: {
+    fontSize: 32,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+    marginTop: Dimensions.get("window").height * .15,
+  },
+
+  body: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
   },
   secondaryButtonContainer: {
     alignSelf: 'center',
@@ -85,11 +102,11 @@ class ForgotPasswordVerification extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-        <Text>Password Reset</Text>
-        <Text>
+        <Text style={styles.heading}> Password Reset</Text>
+        <Text style={styles.body}>
         You should be receiving a confirmation email from us soon. If you do not receive an email from us, please try again with your official (no aliases please!) Dartmouth email. 
         </Text>
-        <TouchableOpacity onPress={this.accountVerified}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={this.accountVerified}>
               <Text style={styles.buttonText}>I have Confirmed the Email</Text>
         </TouchableOpacity>
         </ImageBackground>

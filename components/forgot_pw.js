@@ -24,6 +24,23 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Dimensions.get("window").height,
   },
+  heading: {
+    fontSize: 32,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+    marginTop: Dimensions.get("window").height * .15,
+  },
+
+  body: {
+    fontSize: 18,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+  },
+
   buttonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
@@ -97,12 +114,12 @@ class ForgotPw extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-        <Text>Forgot Password?</Text>
-        <Text>
+        <Text style={styles.heading}>Forgot Password?</Text>
+        <Text style={styles.body}>
         Hey, we get it! We all forget out passwords sometimes.
           Let us know how we can reach you so we can reset it for you.         </Text>
         <TextInput style={styles.input} onChangeText={e => this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
-        <TouchableOpacity onPress={this.forgotPwEmail}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={this.forgotPwEmail}>
               <Text style={styles.buttonText}>Reset Password</Text>
         </TouchableOpacity>
         </ImageBackground>

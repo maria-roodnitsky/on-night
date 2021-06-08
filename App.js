@@ -94,7 +94,7 @@ class App extends Component {
       if (response.data.activated) {
         this.setState({ authenticated: true});
       } else {
-        alert("Oops. looks like you haven't verified your email yet.");
+        Alert.alert("Oops. looks like you haven't verified your email yet.");
       }
     }).catch((error) => {
       console.log("Activation failed. Try again");

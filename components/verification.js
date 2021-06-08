@@ -13,6 +13,24 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Dimensions.get("window").height,
   },
+
+  heading: {
+    fontSize: 32,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+    marginTop: Dimensions.get("window").height * .15,
+  },
+
+  body: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+  },
+
   buttonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
@@ -64,8 +82,8 @@ class Verification extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-        <Text>Verification</Text>
-        <Text>
+        <Text style={styles.heading}>Verification</Text>
+        <Text style={styles.body}>
           You should soon receive an email authorizing you to sign in to OnNight!
         </Text>
         <TouchableOpacity style={styles.buttonContainer} onPress={this.activated}>
