@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   infoView: {
-      width: '50%',
+      width: '70%',
   },
   flexBox: {
     display: 'flex',
@@ -114,7 +114,7 @@ class Profile extends Component {
     renderAdmin = () => {
         if (this.props.user.permission != 'none') {
             return (
-                <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("Portal")}}>
+                <TouchableOpacity style={[styles.buttonContainer, {backgroundColor:"#00FFFF20", borderColor: "#00FFFF60"}]} onPress={() => {this.props.navigation.navigate("Portal")}}>
                     <Text style={styles.buttonText}>Admin Portal</Text>
                 </TouchableOpacity>
             );
@@ -185,33 +185,19 @@ class Profile extends Component {
                 <View style={styles.container}>
                     <View style={styles.flexBox}>
                         {this.renderImage()}
-                        <View style={styles.infoView}>
-                            <Text style={styles.title}>{this.props.user.name}</Text>
-                            <Text style={styles.title}>{this.props.user.classYear}</Text>
+                        <View style={[styles.infoView]}>
+                            <Text style={[styles.title, {fontSize: 22}]}>{this.props.user.name}</Text>
+                            <Text style={[styles.buttonText, {fontSize: 16, alignSelf: "flex-start", marginLeft: 15, marginTop: -20}]}>{this.props.user.classYear}</Text>
                         </View>
                     </View>
-                    <Text style={styles.title}>Greek Affiliation: {this.props.user.house}</Text>
-                    <Text style={styles.title}>Email: {this.props.user.email}</Text>
-                    {/* <TextInput style={styles.input}  placeholder="EMAIL"/> */}
-                    {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true} placeholder="PASSWORD"/> */}
-                    {/* <TextBox
-                        placeholder="PASSWORD"
-                        secureTextEntry={true}
-                        containerStyles={[styles.input]}
-                    /> */}
-                    {/* <PasswordInputText style={styles.input2} onChangeText={e=>this.onPasswordChange(e)} /> */}
-        
-                    {/* <Button title="Sign In NOW" onPress={this.signedIn} backgroundColor="red"/> */}
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("EditProfile")}}>
+                    <Text style={[styles.buttonText, {alignSelf: "flex-start", marginLeft: 20}]}>Greek House</Text>
+                    <Text style={[styles.title, {fontSize: 15, marginLeft: 20}]}>{this.props.user.house}</Text>
+                    <Text style={[styles.buttonText, {alignSelf: "flex-start", marginLeft: 20}]}>Email</Text>
+                    <Text style={[styles.title, {fontSize: 15, marginLeft: 20}]}>{this.props.user.email}</Text>
+                    <TouchableOpacity style={[styles.buttonContainer, {marginTop: 175}]} onPress={() => {this.props.navigation.navigate("EditProfile")}}>
                         <Text style={styles.buttonText}>Edit</Text>
                     </TouchableOpacity>
                     {this.renderAdmin()}
-                    {/* <TouchableOpacity style={styles.secondaryButtonContainer} >
-                        <Text style={styles.buttonText}>Sign Up</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity >
-                        <Text style={[styles.buttonText, styles.footer]}>Forgot your password?</Text>
-                    </TouchableOpacity> */}
                     </View>
               )
         }
