@@ -106,6 +106,7 @@ class App extends Component {
     axios.post(`${ROOT_URL}/reset/sendemail`, fields).then(() => {
       console.log("success");
     }).catch((error) => {
+      Alert.alert("Hey! It looks like you do not have an account yet. Please go back and sign up.")
       console.log("Resetting Password failed1. Try again");
     });
   }
