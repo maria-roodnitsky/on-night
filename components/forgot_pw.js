@@ -68,7 +68,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Open-Sans', 
     textTransform: "uppercase"
-  }
+  }, 
+  buttonTextError: {
+    textAlign: 'center',
+    color: 'red',
+    fontFamily: 'Open-Sans', 
+  },
 });
 
 class ForgotPw extends Component {
@@ -76,6 +81,8 @@ class ForgotPw extends Component {
     super(props);
     this.state = {
       email: '',
+      emptyFields: false,
+      invalidEmail: false,
     };
   }
 
@@ -91,17 +98,21 @@ class ForgotPw extends Component {
   forgotPwEmail = () => {
     let pCount = 0;
     if (this.state.email == ''){
-      Alert.alert(
-        'Email cannnot be empty.'
-    )
+    //   Alert.alert(
+    //     'Email cannnot be empty.'
+    // )
+    this.setState({emptyFields: true});
+    this.setState({invalidEmail: false});
     }
 
     else if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
 
-      Alert.alert(
-        'Invalid Email',
-        'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
-      )
+      // Alert.alert(
+      //   'Invalid Email',
+      //   'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
+      // )
+      this.setState({emptyFields: false});
+      this.setState({invalidEmail: true});
     }
     else{
       const fields = { email: this.state.email};
@@ -119,6 +130,8 @@ class ForgotPw extends Component {
         Hey, we get it! We all forget out passwords sometimes.
           Let us know how we can reach you so we can reset it for you.         </Text>
         <TextInput style={styles.input} onChangeText={e => this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
+        {this.state.invalidEmail && <Text style={[styles.buttonTextError]} > Invalid Email! Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu </Text>}
+        {this.state.emptyFields && <Text style={[styles.buttonTextError]} > Sorry! Any field cannot be empty. </Text>}
         <TouchableOpacity style={styles.buttonContainer} onPress={this.forgotPwEmail}>
               <Text style={styles.buttonText}>Reset Password</Text>
         </TouchableOpacity>

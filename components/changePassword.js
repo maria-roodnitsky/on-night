@@ -79,7 +79,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Open-Sans', 
     textTransform: "uppercase"
-  }
+  }, 
+  buttonTextError: {
+    textAlign: 'center',
+    color: 'red',
+    fontFamily: 'Open-Sans', 
+  },
 });
 
 class ChangePassword extends Component {
@@ -88,6 +93,8 @@ class ChangePassword extends Component {
       this.state = {
         password: '',
         confirmPassword: '',
+        emptyFields: false,
+        passwordMatch: false,
       };
     }
 
@@ -104,14 +111,18 @@ class ChangePassword extends Component {
 
     passwordChanged = () => {
       if (this.state.password == '' || this.state.confirmPassword == ''){
-        Alert.alert(
-          'Passwords cannnot be empty.'
-      )
+      //   Alert.alert(
+      //     'Passwords cannnot be empty.'
+      // )
+      this.setState({emptyFields: true});
+      this.setState({passwordMatch: false});
       }  
       else if (this.state.password != this.state.confirmPassword){
-          Alert.alert(
-            'Passwords do not match'
-        )
+        //   Alert.alert(
+        //     'Passwords do not match'
+        // )
+        this.setState({emptyFields: false});
+        this.setState({passwordMatch: true});
         }
         else {
           const fields = { password: this.state.password};
@@ -139,6 +150,8 @@ class ChangePassword extends Component {
                   containerStyles={[styles.input]}
                   placeholder="CONFIRM PASSWORD"
                 />
+                {this.state.emptyFields && <Text style={[styles.buttonTextError]} > Sorry! Any field cannot be empty. </Text>}
+                {this.state.passwordMatch && <Text style={[styles.buttonTextError]} > Sorry! Passwords must match. </Text>}
                 <TouchableOpacity style={styles.buttonContainer} onPress={this.passwordChanged}>
 
                   <Text style={styles.buttonText}>Reset Password</Text>

@@ -78,6 +78,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Open-Sans', 
     textTransform: "uppercase"
   },
+  buttonTextError: {
+    textAlign: 'center',
+    color: 'red',
+    fontFamily: 'Open-Sans', 
+  },
   footer: {
     marginTop: 200,
     alignSelf: "center",
@@ -90,6 +95,7 @@ class SignIn extends Component {
       this.state = {
         email: '',
         password: '',
+        emptyFields: false,
       };
     }
 
@@ -104,11 +110,13 @@ class SignIn extends Component {
     signedIn = () => {
       this.props.changeEmail(this.state.email);
       if (this.state.password == '' || this.state.email == ''){
-        Alert.alert(
-          'Fields cannnot be empty.'
-      )
+      //   Alert.alert(
+      //     'Fields cannnot be empty.'
+      // )
+      this.setState({emptyFields: true});
       }
       else{
+        this.setState({emptyFields: false});
         const fields = { email: this.state.email, password: this.state.password };
         this.props.signin(fields);
       }
@@ -128,6 +136,7 @@ class SignIn extends Component {
               containerStyles={[styles.input, {paddingRight:12, color:"#ffff09"}]
               }
             />
+            {this.state.emptyFields && <Text style={[styles.buttonTextError]} > Sorry! Any field cannot be empty. </Text>}
             <TouchableOpacity style={[styles.buttonContainer, {marginTop:40, marginBottom: 20}]} onPress={this.signedIn}>
               <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
