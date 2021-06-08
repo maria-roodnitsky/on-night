@@ -173,6 +173,7 @@ class OrgEvents extends Component {
     deleteEvent = (event) => {
         axios.delete(`${ROOT_URL}/events/${event._id}`, {headers: {'authorization': this.props.token}}).then((response) => {
             console.log('Event Deleted!');
+            this.props.reRender();
           }).catch((error) => {
             alert('Event not deleted');
           });
@@ -193,7 +194,7 @@ class OrgEvents extends Component {
                         <Text style={styles.buttonText}>Add New Event</Text>
                     </TouchableOpacity>
                     {/* fix scrolling */}
-                    <ScrollView>
+                    <ScrollView style={{marginBottom: 250,}}>
                         {this.state.events.map((event) => {
                             return (
                                 <View key={event.title} style={styles.contents}>

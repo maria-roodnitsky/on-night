@@ -9,6 +9,7 @@ import { withTheme } from 'react-native-elements';
 import NewEvent from '../components/new_event';
 import StudentSearch from '../components/student_search';
 import axios from 'axios';
+import EditProfile from '../components/edit_profile';
 
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
 
@@ -133,6 +134,11 @@ class ProfileTab extends Component {
     });
   }
 
+  reRender = () => {
+    this.setState({users: null});
+    this.componentDidMount();
+  }
+
   renderTab = () => {
     if ((this.state.users == null || this.state.events == null || this.state.user == null) && this.state.problemLoading == false) {
       return (
@@ -198,7 +204,7 @@ class ProfileTab extends Component {
               color: 'white',
             }}}
           >
-            {props => <OrgEvents {...props} user={this.state.user} events={this.state.events}/>}
+            {props => <OrgEvents {...props} reRender={this.reRender} user={this.state.user} events={this.state.events} reRender={this.reRender}/>}
           </Stack.Screen>
           <Stack.Screen
             name="NewEvent"
@@ -215,7 +221,7 @@ class ProfileTab extends Component {
               color: 'white',
             }}}
           >
-            {props => <NewEvent {...props} refresh={this.refresh} token={this.props.token} user={this.state.user} events={this.state.events}/>}
+            {props => <NewEvent {...props} reRender={this.reRender} token={this.props.token} user={this.state.user} events={this.state.events}/>}
           </Stack.Screen>
           <Stack.Screen
             name="Members"
@@ -236,7 +242,7 @@ class ProfileTab extends Component {
           </Stack.Screen>
           <Stack.Screen
             name="NewMember"
-            options={{title: 'NewMember',
+            options={{title: 'New Member',
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
@@ -249,7 +255,24 @@ class ProfileTab extends Component {
               color: 'white',
             }}}
           >
-            {props => <StudentSearch {...props} users={this.state.users} user={this.state.user}/>}
+            {props => <StudentSearch {...props} reRender={this.reRender} users={this.state.users} user={this.state.user}/>}
+          </Stack.Screen>
+          <Stack.Screen
+            name="EditProfile"
+            options={{title: 'Profile',
+            headerStyle: {
+              backgroundColor: '#1c1d31',
+              opacity: 1,
+              elevation: 0,
+            },
+            headerTitleStyle: {
+              fontSize: 24,
+              textAlign: 'left',
+              fontFamily: 'Comfortaa-Regular',
+              color: 'white',
+            }}}
+          >
+            {props => <EditProfile {...props} user={this.state.user} reRender={this.reRender}/>}
           </Stack.Screen>
         </Stack.Navigator>
       );
