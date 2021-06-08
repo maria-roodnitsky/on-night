@@ -80,6 +80,7 @@ class App extends Component {
 
       this.setState({ authenticated: true, token: response.data.token });
     }).catch((error) => {
+      alert("Hey! Looks like your credentials are wrong or you do not have an account. Please try again!")
       console.log("Signin failed. Try again");
     });
   }
