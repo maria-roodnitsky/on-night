@@ -146,8 +146,8 @@ const Schedule: React.FC<ScheduleProps> = (props) => {
 
   const renderEvent = (event) => {
     return (
-      <TouchableOpacity style={{marginRight: 10, marginTop: 17, marginBottom:20}}>
-        <Card style={{backgroundColor: 'rgba(255,255,255,0.5)'}}>
+      <View style={{marginRight: 10, marginTop: 17, marginBottom:20}}>
+        <Card style={{backgroundColor: 'rgba(255,255,255,0.2)', borderWidth: 0,}}>
           <Card.Content>
             <View
               style={{
@@ -155,13 +155,13 @@ const Schedule: React.FC<ScheduleProps> = (props) => {
                 justifyContent: 'space-between',
               }}>
               {renderImage(event)}
-              <Text style={{margin: 3, fontFamily: 'Open-Sans', fontSize: 20}}>{event.title}</Text>
-              <Text style={{margin: 3, fontFamily: 'Open-Sans'}}>{event.location}, {event.time}</Text>
-              <Text style={{margin: 3, fontFamily: 'Open-Sans'}}>{event.description}</Text>
+              <Text style={{margin: 3, fontFamily: 'Comfortaa-Bold', fontSize: 20, color: 'white'}}>{event.title}</Text>
+              <Text style={{margin: 3, marginBottom: 0, fontFamily: 'Open-Sans', color: '#ffffff'}}>{event.location}, {event.time}</Text>
+              <Text style={{margin: 3, marginTop: 2, fontFamily: 'Open-Sans', color: '#ffffff'}}>{event.description}</Text>
             </View>
           </Card.Content>
         </Card>
-      </TouchableOpacity>
+      </View>
     );
   }
 
