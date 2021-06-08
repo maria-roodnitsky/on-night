@@ -232,7 +232,7 @@ class SignUp extends Component {
     
     render () {
         return (
-            <SafeAreaView>
+            <SafeAreaView style={{marginTop: -20}}>
               <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
                 {this.renderSignUp()}
               </ImageBackground>

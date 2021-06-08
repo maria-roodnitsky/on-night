@@ -147,7 +147,7 @@ class SignIn extends Component {
   
     render () {
         return (
-            <SafeAreaView>
+            <SafeAreaView style={{marginTop: -20}}>
               <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
                 {this.renderSignIn()}
               </ImageBackground>
