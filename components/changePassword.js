@@ -103,7 +103,12 @@ class ChangePassword extends Component {
       }
 
     passwordChanged = () => {
-        if (this.state.password != this.state.confirmPassword){
+      if (this.state.password == '' || this.state.confirmPassword == ''){
+        Alert.alert(
+          'Passwords cannnot be empty.'
+      )
+      }  
+      else if (this.state.password != this.state.confirmPassword){
           Alert.alert(
             'Passwords do not match'
         )

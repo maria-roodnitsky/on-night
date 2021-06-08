@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 import {activate} from '../App';
+import { Alert } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,6 +13,24 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Dimensions.get("window").height,
   },
+
+  heading: {
+    fontSize: 32,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+    marginTop: Dimensions.get("window").height * .15,
+  },
+
+  body: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+  },
+
   buttonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
@@ -63,13 +82,13 @@ class Verification extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-        <Text>Verification</Text>
-        <Text>
+        <Text style={styles.heading}>Verification</Text>
+        <Text style={styles.body}>
           You should soon receive an email authorizing you to sign in to OnNight!
         </Text>
-        <TouchableOpacity onPress={this.activated}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={this.activated}>
               <Text style={styles.buttonText}>I have Confirmed the Email</Text>
-        </TouchableOpacity>
+            </TouchableOpacity>
         </ImageBackground>
       </SafeAreaView>
     );

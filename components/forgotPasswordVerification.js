@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 import axios from 'axios';
 import forgotPasswordEmailVerification from '../App';
+import { Alert } from 'react-native';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -12,6 +14,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: Dimensions.get("window").height,
   },
+
   buttonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
@@ -22,6 +25,22 @@ const styles = StyleSheet.create({
     opacity: .8,
     borderWidth: 2,
     borderColor:'#A9469F',
+  },
+  heading: {
+    fontSize: 32,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
+    marginTop: Dimensions.get("window").height * .15,
+  },
+
+  body: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 25,
+    fontFamily: 'Comfortaa-Regular',
+    color: 'white',
   },
   secondaryButtonContainer: {
     alignSelf: 'center',
@@ -67,14 +86,12 @@ class ForgotPasswordVerification extends Component {
     console.log({email: this.props.email});
     axios.post(`${ROOT_URL}/users/info`, {email: this.props.email}).then((response) => {
       console.log(response.data);
-      // id: response.data.id;
       this.props.changeId(response.data.user._id);
       if (response.data.user.resettingPassword){
         this.props.navigation.navigate("changePassword");
-        // console.log('hey');
       }
       else{
-        alert("Oops. looks like you haven't verified your email yet.");
+        Alert.alert("Oops. looks like you haven't verified your email yet.");
       }
     }).catch((error) => {
       console.log("Resetting Password failed2. Try again");
@@ -85,11 +102,11 @@ class ForgotPasswordVerification extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-        <Text>Password Reset</Text>
-        <Text>
+        <Text style={styles.heading}> Password Reset</Text>
+        <Text style={styles.body}>
         You should be receiving a confirmation email from us soon. If you do not receive an email from us, please try again with your official (no aliases please!) Dartmouth email. 
         </Text>
-        <TouchableOpacity onPress={this.accountVerified}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={this.accountVerified}>
               <Text style={styles.buttonText}>I have Confirmed the Email</Text>
         </TouchableOpacity>
         </ImageBackground>

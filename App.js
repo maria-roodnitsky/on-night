@@ -15,6 +15,7 @@ import Verification from './components/verification';
 import ForgotPw from './components/forgot_pw'
 import ForgotPasswordVerification from './components/forgotPasswordVerification';
 import ChangePassword from './components/changePassword';
+import { Alert } from 'react-native';
 
 // disable really annoying in app warnings
 console.disableYellowBox = true;
@@ -57,6 +58,7 @@ class App extends Component {
     axios.post(`${ROOT_URL}/signup`, fields).then((response) => {
       this.setState({token: response.data.token});
     }).catch((error) => {
+      Alert.alert("Hey! It looks like you already have an account. Please go back and sign in.")
       console.log(`Signup failed. Try again`);
     });
   }
@@ -80,7 +82,7 @@ class App extends Component {
 
       this.setState({ authenticated: true, token: response.data.token });
     }).catch((error) => {
-      alert("Hey! Looks like your credentials are wrong or you do not have an account. Please try again!")
+      Alert.alert("Hey! Looks like your credentials are wrong or you do not have an account. Please try again!")
       console.log("Signin failed. Try again");
     });
   }
@@ -92,7 +94,7 @@ class App extends Component {
       if (response.data.activated) {
         this.setState({ authenticated: true});
       } else {
-        alert("Oops. looks like you haven't verified your email yet.");
+        Alert.alert("Oops. looks like you haven't verified your email yet.");
       }
     }).catch((error) => {
       console.log("Activation failed. Try again");
