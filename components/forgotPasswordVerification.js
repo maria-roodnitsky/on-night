@@ -94,6 +94,7 @@ class ForgotPasswordVerification extends Component {
         Alert.alert("Oops. looks like you haven't verified your email yet.");
       }
     }).catch((error) => {
+      Alert.alert("Hey! It looks like you do not have an account yet. Please go back and sign up.")
       console.log("Resetting Password failed2. Try again");
     });
   }
