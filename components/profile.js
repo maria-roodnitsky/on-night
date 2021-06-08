@@ -231,7 +231,7 @@ class Profile extends Component {
                     <Text style={[styles.title, {fontSize: 15, marginLeft: 20}]}>{this.props.user.house}</Text>
                     <Text style={[styles.buttonText, {alignSelf: "flex-start", marginLeft: 20}]}>Email</Text>
                     <Text style={[styles.title, {fontSize: 15, marginLeft: 20}]}>{this.props.user.email}</Text>
-                    <View style={{display: 'flex', flexDirection: 'row', justifyContent:'center', marginTop: 175}}>
+                    <View style={{display: 'flex', flexDirection: 'row', justifyContent:'center', marginTop: 125}}>
                         <TouchableOpacity style={[styles.buttonContainer2]} onPress={() => {this.props.navigation.navigate("EditProfile")}}>
                             <Text style={styles.buttonText}>Edit</Text>
                         </TouchableOpacity>

@@ -129,6 +129,7 @@ class SignIn extends Component {
           <View style={styles.container}>
             <Text style={styles.heading}> Sign In</Text>
             <TextInput style={[styles.input]}  autoCapitalize='none' onChangeText={e=>this.onEmailChange(e)} placeholder="EMAIL" placeholderTextColor="#ffffff"/>
+            <Text style={{marginTop: -16, color: 'rgb(200,200,200)', textAlign: 'center'}}>Note: please enter all lowercase characters</Text>
             <TextBox
               onChangeText={e=>this.onPasswordChange(e)} 
               placeholder="PASSWORD"
