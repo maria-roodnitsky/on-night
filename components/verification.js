@@ -84,6 +84,7 @@ class Verification extends Component {
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
         <Text style={styles.heading}>Verification</Text>
         <Text style={styles.body}>
+          Please Check Your Spam Folder.
           You should soon receive an email authorizing you to sign in to OnNight!
         </Text>
         <TouchableOpacity style={styles.buttonContainer} onPress={this.activated}>

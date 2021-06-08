@@ -58,7 +58,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Open-Sans', 
     textTransform: "uppercase"
-  }
+  }, 
+  buttonTextError: {
+    textAlign: 'center',
+    color: 'red',
+    fontFamily: 'Open-Sans', 
+  },
 });
 
 const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
@@ -68,6 +73,7 @@ class ForgotPasswordVerification extends Component {
     super(props);
     this.state = {
       email: '',
+      verified: false,
     };
   }
 
@@ -91,7 +97,8 @@ class ForgotPasswordVerification extends Component {
         this.props.navigation.navigate("changePassword");
       }
       else{
-        Alert.alert("Oops. looks like you haven't verified your email yet.");
+        // Alert.alert("Oops. looks like you haven't verified your email yet.");
+        this.setState({verified: true});
       }
     }).catch((error) => {
       Alert.alert("Hey! It looks like you do not have an account yet. Please go back and sign up.")
@@ -105,11 +112,12 @@ class ForgotPasswordVerification extends Component {
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
         <Text style={styles.heading}> Password Reset</Text>
         <Text style={styles.body}>
-        You should be receiving a confirmation email from us soon. If you do not receive an email from us, please try again with your official (no aliases please!) Dartmouth email. 
+        Please check your spam folder. You should be receiving a confirmation email from us soon. If you do not receive an email from us, please try again with your official (no aliases please!) Dartmouth email. 
         </Text>
         <TouchableOpacity style={styles.buttonContainer} onPress={this.accountVerified}>
               <Text style={styles.buttonText}>I have Confirmed the Email</Text>
         </TouchableOpacity>
+        {this.state.verified && <Text style={[styles.buttonTextError]} > Oops. looks like you haven't verified your email yet. </Text>}
         </ImageBackground>
       </SafeAreaView>
     );

@@ -62,6 +62,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor:'#A9469F',
   },
+  buttonTextError: {
+    textAlign: 'center',
+    color: 'red',
+    fontFamily: 'Open-Sans', 
+  },
   secondaryButtonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
@@ -92,6 +97,9 @@ class SignUp extends Component {
         email: '',
         password: '',
         confirmPassword: '',
+        emptyFields: false,
+        invalidEmail: false,
+        passwordMatch: false,
       };
     }
 
@@ -152,21 +160,30 @@ class SignUp extends Component {
         }
         classYear += parseInt(yearStr);
         if (this.state.password == '' || this.state.email == '' || this.state.confirmPassword == ''){
-          Alert.alert(
-            'Fields cannnot be empty.'
-        )
+        //   Alert.alert(
+        //     'Fields cannnot be empty.'
+        // )
+        this.setState({emptyFields: true});
+        this.setState({invalidEmail: false});
+        this.setState({passwordMatch: false});
         }
         else if ((pCount !== 3 && pCount !== 4) || !this.state.email.includes('@dartmouth.edu')) {
 
-          Alert.alert(
-            'Invalid Email',
-            'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
-          )
+          // Alert.alert(
+          //   'Invalid Email',
+          //   'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
+          // )
+          this.setState({emptyFields: false});
+          this.setState({invalidEmail: true});
+          this.setState({passwordMatch: false});
         }
         else if (this.state.password != this.state.confirmPassword){
-          Alert.alert(
-            'Passwords do not match'
-        )
+        //   Alert.alert(
+        //     'Passwords do not match'
+        // )
+        this.setState({emptyFields: false});
+        this.setState({invalidEmail: false});
+        this.setState({passwordMatch: true});
         } else {
           let name = ''
           let currCount = 0;
@@ -198,6 +215,7 @@ class SignUp extends Component {
               <ScrollView style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
                 <TextInput style={styles.input} autoCapitalize='none' placeholderTextColor = "#ffffff" onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
+                {this.state.invalidEmail && <Text style={[styles.buttonTextError]} > Invalid Email! Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu </Text>}
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 
                   secureTextEntry={true}
@@ -212,6 +230,9 @@ class SignUp extends Component {
                   placeholderTextColor = "#ffffff"
                   containerStyles={[styles.input, {paddingRight:12, marginTop: 0}]}
                 />
+                {this.state.emptyFields && <Text style={[styles.buttonTextError]} > Sorry! Any field cannot be empty. </Text>}
+                {this.state.passwordMatch && <Text style={[styles.buttonTextError]} > Sorry! Passwords must match. </Text>}
+
                 <TouchableOpacity style={[styles.buttonContainer, {marginTop:40}]} onPress={this.signedUp}>
 
                   <Text style={styles.buttonText}>Sign Up</Text>
