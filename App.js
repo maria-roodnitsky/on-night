@@ -127,12 +127,13 @@ class App extends Component {
   //   });
   // }
 
-  passwordReset = (fields) => {
+  passwordReset = (fields, email) => {
     console.log(fields);
     console.log(this.state.id);
     axios.put(`${ROOT_URL}/users/${this.state.id}`, fields).then((response) => {
       console.log(response.data);
-      this.setState({ authenticated: true});
+      const signinFields = {email: email, password: fields.password};
+      this.signin(signinFields);
     }).catch((error) => {
       console.log("Resetting Password failed3. Try again");
     });
@@ -209,7 +210,7 @@ class App extends Component {
 
               <Stack.Screen
                 name="changePassword"
-                children={() => <ChangePassword passwordReset={this.passwordReset}/>}
+                children={() => <ChangePassword email={this.state.email}passwordReset={this.passwordReset}/>}
                 options={{ 
                   title: '',
                   headerTransparent: true,

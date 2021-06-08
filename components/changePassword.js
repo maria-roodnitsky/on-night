@@ -127,7 +127,7 @@ class ChangePassword extends Component {
         }
         else {
           const fields = { password: this.state.password};
-          this.props.passwordReset(fields);
+          this.props.passwordReset(fields, this.props.email);
         }
     }
 
