@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 import {activate} from '../App';
+import { Alert } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -67,9 +68,9 @@ class Verification extends Component {
         <Text>
           You should soon receive an email authorizing you to sign in to OnNight!
         </Text>
-        <TouchableOpacity onPress={this.activated}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={this.activated}>
               <Text style={styles.buttonText}>I have Confirmed the Email</Text>
-        </TouchableOpacity>
+            </TouchableOpacity>
         </ImageBackground>
       </SafeAreaView>
     );

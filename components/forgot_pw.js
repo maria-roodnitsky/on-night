@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, ImageBackground, StyleSheet, Dimensions, TextInput} from 'react-native';
 import fotgotPassword from '../App';
+import { Alert } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -72,9 +73,15 @@ class ForgotPw extends Component {
 
   forgotPwEmail = () => {
     let pCount = 0;
-    if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
+    if (this.state.email == ''){
+      Alert.alert(
+        'Email cannnot be empty.'
+    )
+    }
 
-      alert(
+    else if ((pCount !== 3 || pCount !== 4) && !this.state.email.includes('@dartmouth.edu')) {
+
+      Alert.alert(
         'Invalid Email',
         'Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu'
       )
