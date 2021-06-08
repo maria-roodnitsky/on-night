@@ -9,6 +9,7 @@ import Boy from '../img/Boy.svg';
 import Champagne from '../img/Wine.svg';
 import Angel from '../img/angel.gif';
 
+
 const safetyPoints=[
   {
     title: "Level 1: Sobriety",

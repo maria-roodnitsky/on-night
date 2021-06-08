@@ -13,6 +13,8 @@ import SignIn from './components/signin';
 import SignUp from './components/signup';
 import Verification from './components/verification';
 import ForgotPw from './components/forgot_pw'
+import ForgotPasswordVerification from './components/forgotPasswordVerification';
+import ChangePassword from './components/changePassword';
 
 // disable really annoying in app warnings
 // console.disableYellowBox = true;
@@ -24,6 +26,8 @@ const getFonts = () => Font.loadAsync({
   'Comfortaa-Regular': require('./assets/fonts/Comfortaa-Regular.ttf'),
   'Comfortaa-Bold': require('./assets/fonts/Comfortaa-Bold.ttf'),
   'Open-Sans': require('./assets/fonts/OpenSans-Regular.ttf')
+  'IcoMoon': require('./assets/fonts/icomoon.ttf')
+
 });
 
 const Stack = createStackNavigator();
@@ -37,11 +41,16 @@ class App extends Component {
       fontsLoaded: false,
       token: '',
       email: '',
+      id:'',
     };
   }
 
   changeEmail = (email) => {
     this.setState({email});
+  }
+
+  changeId = (id) => {
+    this.setState({id});
   }
 
   signup = (fields) => {
@@ -78,7 +87,6 @@ class App extends Component {
 
   activate = (fields) => {
     console.log(fields);
-
     axios.post(`${ROOT_URL}/activate`, {email: this.state.email}).then((response) => {
       console.log(response.data);
       if (response.data.activated) {
@@ -90,6 +98,43 @@ class App extends Component {
       console.log("Activation failed. Try again");
     });
   }
+
+  forgotPassword = (fields) => {
+    console.log(fields);
+    axios.post(`${ROOT_URL}/reset/sendemail`, fields).then(() => {
+      console.log("success");
+    }).catch((error) => {
+      console.log("Resetting Password failed1. Try again");
+    });
+  }
+
+  // forgotPasswordEmailVerification = (fields) => {
+  //   console.log({email: this.state.email});
+  //   axios.post(`${ROOT_URL}/users/info`, {email: this.state.email}).then((response) => {
+  //     console.log(response.data);
+  //     // id: response.data.id;
+  //     if (response.data.resettingPassword){
+  //       this.props.navigation.navigate("changePassword");
+  //     }
+  //     else{
+  //       alert("Oops. looks like you haven't verified your email yet.");
+  //     }
+  //   }).catch((error) => {
+  //     console.log("Resetting Password failed2. Try again");
+  //   });
+  // }
+
+  passwordReset = (fields) => {
+    console.log(fields);
+    console.log(this.state.id);
+    axios.put(`${ROOT_URL}/users/${this.state.id}`, fields).then((response) => {
+      console.log(response.data);
+      this.setState({ authenticated: true});
+    }).catch((error) => {
+      console.log("Resetting Password failed3. Try again");
+    });
+  }
+
 
   render () {
     if (!this.state.fontsLoaded) {
@@ -130,6 +175,25 @@ class App extends Component {
                 {/* {return <SignIn signin={this.signin}/>} */}
                 {props => <SignIn {...props} signin={this.signin} changeEmail={this.changeEmail}/>}
               </Stack.Screen>
+                            
+              <Stack.Screen
+                name="ForgotPw"
+              >
+                {props => <ForgotPw {...props} forgotPassword={this.forgotPassword} changeEmail={this.changeEmail}/>}
+              </Stack.Screen>
+
+              <Stack.Screen
+                name="ForgotPasswordVerification"
+              >
+                {props => <ForgotPasswordVerification {...props} changeId={this.changeId} email={this.state.email} forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
+              </Stack.Screen>
+
+              <Stack.Screen
+                name="changePassword"
+                children={() => <ChangePassword passwordReset={this.passwordReset}/>}
+              >
+              </Stack.Screen>
+
               <Stack.Screen
                 name="SignUp"
                 options={{ 
@@ -150,10 +214,7 @@ class App extends Component {
               >
                 {/* {props => <Verification {...props} activated={this.activate}/>} */}
                 </Stack.Screen>
-              <Stack.Screen
-                name="ForgotPW"
-                component={ForgotPw}
-              />
+
             </Stack.Navigator>
           </NavigationContainer>
         )
