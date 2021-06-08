@@ -200,7 +200,7 @@ class App extends Component {
                  headerTransparent: true,
                  headerTintColor: "white",
                  headerStyle: {
-                 height: 180, // Specify the height of your custom header
+                 height: 185, // Specify the height of your custom header
                                   }
                 }}
               >

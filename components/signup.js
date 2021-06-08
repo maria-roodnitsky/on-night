@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
-    width: '50%',
+    width: '75%',
     padding: 10,
     borderRadius: 20, 
     margin: 10,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   secondaryButtonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
-    width: '50%',
+    width: '75%',
     padding: 10,
     borderRadius: 20, 
     margin: 10,
@@ -197,27 +197,32 @@ class SignUp extends Component {
             >
               <ScrollView style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
-                <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
+                <TextInput style={styles.input} autoCapitalize='none' placeholderTextColor = "#ffffff" onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 
                   secureTextEntry={true}
-                  containerStyles={[styles.input]}
                   placeholder="PASSWORD"
+                  placeholderTextColor = "#ffffff"
+                  containerStyles={[styles.input, {paddingRight:12, color:"#ffffff"}]}
                 />
                 <TextBox
                   onChangeText={e=>this.onConfirmPasswordChange(e)} 
                   secureTextEntry={true}
-                  containerStyles={[styles.input]}
                   placeholder="CONFIRM PASSWORD"
+                  placeholderTextColor = "#ffffff"
+                  containerStyles={[styles.input, {paddingRight:12, marginTop: 0}]}
                 />
-                <TouchableOpacity style={styles.buttonContainer} onPress={this.signedUp}>
+                <TouchableOpacity style={[styles.buttonContainer, {marginTop:40}]} onPress={this.signedUp}>
 
                   <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
-                <Text style={styles.question}>Already have an account?</Text>
-                <TouchableOpacity style={styles.secondaryButtonContainer} onPress={() => {this.props.navigation.navigate("SignIn")}}>
-                  <Text style={styles.buttonText}>Sign In</Text>
-                </TouchableOpacity>
+
+                <View style={[{flexDirection: 'row', alignSelf: "center", marginTop: 150}]} >
+            <Text style={[styles.buttonText, {color: "#ffffff90"}]}>Already have an account?</Text>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("SignIn")}}>
+              <Text style={[styles.buttonText, {fontFamily: 'Comfortaa-Bold', marginLeft: 5, fontSize: 14, marginTop: -3}]}>Sign In!</Text>
+            </TouchableOpacity>
+            </View>
                 <View style={{marginTop: 40}}/>
               </ScrollView>
             </KeyboardAvoidingView>
