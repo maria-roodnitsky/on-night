@@ -148,7 +148,7 @@ class SignIn extends Component {
             <View style={[{flexDirection: 'row', alignSelf: "center", marginTop: 220}]} >
             <Text style={[styles.buttonText, {color: "#ffffff90"}]}>Need an account?</Text>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("SignUp")}}>
-              <Text style={[styles.buttonText, {fontFamily: 'Comfortaa-Bold', marginLeft: 5, fontSize: 14, marginTop: -3}]}>Sign Up!</Text>
+              <Text style={[styles.buttonText, {marginLeft: 5}]}>Sign Up!</Text>
             </TouchableOpacity>
             </View>
 
