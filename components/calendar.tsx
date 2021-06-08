@@ -116,7 +116,7 @@ const Schedule: React.FC = (props) => {
       <Agenda
         items={events}
         loadItemsForMonth={loadEvents}
-        selected={'2021-11-22'}
+        selected={'2021-06-02'}
         renderItem={renderEvent}
         theme={{
             selectedDayBackgroundColor: '#A9469F60',

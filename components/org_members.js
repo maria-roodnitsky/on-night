@@ -174,7 +174,7 @@ class OrgMembers extends Component {
                     <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("NewMember")}}>
                         <Text style={styles.buttonText} >Add New Member</Text>
                     </TouchableOpacity>
-                    <ScrollView>
+                    <ScrollView style={{marginBottom: 250,}}>
                         {this.state.members.map((member) => {
                             return (
                                 <View key={member.name} style={styles.contents}>

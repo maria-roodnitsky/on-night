@@ -112,6 +112,12 @@ const styles = StyleSheet.create({
         textTransform: "uppercase",
         fontSize: 13,
       },
+      searchBar: {
+        color: 'white',
+      },
+      searchContainer: {
+        backgroundColor: 'transparent',
+      }
   });
 
 class StudentSearch extends Component {
@@ -160,7 +166,7 @@ class StudentSearch extends Component {
       const fields = {house: this.props.user.house}
       axios.put(`${ROOT_URL}/users/${user._id}`, fields).then((response) => {
         console.log(response.data);
-        this.props.navigation.navigate("Members");
+        this.props.reRender();
       }).catch((error) => {
         console.log("Failed to add to org");
       });
@@ -191,7 +197,7 @@ class StudentSearch extends Component {
     }
 
     return (
-      <View style={styles.contents}>
+      <View key={student.mail} style={styles.contents}>
           <View>
                 <Text style={styles.title}>{student.displayName}</Text>
                 <Text style={styles.subtitle}>{student.mail}</Text>
@@ -212,15 +218,15 @@ class StudentSearch extends Component {
       return this.renderLoadingView();
     }
     return (
-      <View>
+      <View style={{marginBottom: 280,}}>
         <SearchBar
-          backgroundColor="#A9469F"
-          showsCancelButton={false}
           onChangeText={(studentQuery) => {
             this.setState({ studentQuery });
             this.fetchData();
           }}
+          containerStyle={styles.searchContainer}
           value={this.state.studentQuery}
+          style={styles.searchBar}
         />
 
         <FlatList

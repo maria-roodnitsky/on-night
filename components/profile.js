@@ -122,7 +122,7 @@ class Profile extends Component {
     }
 
     renderImage = () => {
-        let imgSource = require('../img/greek_spaces/psiu.jpg');
+        let imgSource = require('../img/greek_spaces/none.png');
         if (this.props.user.house == 'Alpha Chi') {
             imgSource = require('../img/greek_spaces/alphachi.jpg');
         } else if (this.props.user.house == 'Alpha Theta') {
@@ -202,7 +202,7 @@ class Profile extends Component {
                     {/* <PasswordInputText style={styles.input2} onChangeText={e=>this.onPasswordChange(e)} /> */}
         
                     {/* <Button title="Sign In NOW" onPress={this.signedIn} backgroundColor="red"/> */}
-                    <TouchableOpacity style={styles.buttonContainer} >
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("EditProfile")}}>
                         <Text style={styles.buttonText}>Edit</Text>
                     </TouchableOpacity>
                     {this.renderAdmin()}

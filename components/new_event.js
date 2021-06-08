@@ -208,8 +208,7 @@ class OrgEvents extends Component {
         const fields = {title: this.state.name, time: this.state.time, day: parseInt(this.state.day), month: parseInt(this.state.month), year: parseInt(this.state.year), description: this.state.description, public: true, location: this.props.user.house};
         axios.post(`${ROOT_URL}/events`, fields, {headers: {'authorization': this.props.token}}).then((response) => {
             console.log('Event Added!');
-            this.props.refresh();
-            this.props.navigation.navigate("Events");
+            this.props.reRender();
           }).catch((error) => {
             alert('Event not added');
           });
