@@ -57,7 +57,8 @@ question: {
 },
 backgroundImg: {
   width: '100%',
-  height: Dimensions.get("window").height,
+  height: Dimensions.get("window").height*1.1,
+  marginTop: -50,
 },
 buttonContainer: {
   alignSelf: 'center',
@@ -175,7 +176,7 @@ class ProfileTab extends Component {
               color: 'white',
             }}}
           >
-            {props => <Profile {...props} email={this.props.email} user={this.state.user}/>}
+            {props => <Profile {...props} reRender={this.reRender} email={this.props.email} user={this.state.user} logout={this.props.logout}/>}
           </Stack.Screen>
           <Stack.Screen
             name="Portal"
