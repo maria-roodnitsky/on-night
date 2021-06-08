@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
-    width: '50%',
+    width: '75%',
     padding: 10,
     borderRadius: 20, 
     margin: 10,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   secondaryButtonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
-    width: '50%',
+    width: '75%',
     padding: 10,
     borderRadius: 20, 
     margin: 10,
@@ -118,26 +118,29 @@ class SignIn extends Component {
         return (
           <View style={styles.container}>
             <Text style={styles.heading}> Sign In</Text>
-            <TextInput style={styles.input} onChangeText={e=>this.onEmailChange(e)} placeholder="EMAIL"/>
-            {/* <TextInput style={styles.input} onChangeText={e=>this.onPasswordChange(e)} secureTextEntry={true} placeholder="PASSWORD"/> */}
+            <TextInput style={[styles.input]}  autoCapitalize='none' onChangeText={e=>this.onEmailChange(e)} placeholder="EMAIL" placeholderTextColor="#ffffff"/>
             <TextBox
               onChangeText={e=>this.onPasswordChange(e)} 
               placeholder="PASSWORD"
+              placeholderTextColor = "#ffffff"
               secureTextEntry={true}
-              containerStyles={[styles.input]}
+              style= {[{color:"#ffff09"}]}
+              containerStyles={[styles.input, {paddingRight:12, color:"#ffff09"}]
+              }
             />
-            {/* <PasswordInputText style={styles.input2} onChangeText={e=>this.onPasswordChange(e)} /> */}
-
-            {/* <Button title="Sign In NOW" onPress={this.signedIn} backgroundColor="red"/> */}
-            <TouchableOpacity style={styles.buttonContainer} onPress={this.signedIn}>
+            <TouchableOpacity style={[styles.buttonContainer, {marginTop:40, marginBottom: 20}]} onPress={this.signedIn}>
               <Text style={styles.buttonText}>Sign In</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.secondaryButtonContainer} onPress={() => {this.props.navigation.navigate("SignUp")}}>
-              <Text style={styles.buttonText}>Sign Up</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("ForgotPw")}}>
               <Text style={[styles.buttonText]}>Forgot your password?</Text>
             </TouchableOpacity>
+            <View style={[{flexDirection: 'row', alignSelf: "center", marginTop: 220}]} >
+            <Text style={[styles.buttonText, {color: "#ffffff90"}]}>Need an account?</Text>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("SignUp")}}>
+              <Text style={[styles.buttonText, {fontFamily: 'Comfortaa-Bold', marginLeft: 5, fontSize: 14, marginTop: -3}]}>Sign Up!</Text>
+            </TouchableOpacity>
+            </View>
+
           </View>
         )
     }
