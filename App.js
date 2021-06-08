@@ -178,12 +178,28 @@ class App extends Component {
                             
               <Stack.Screen
                 name="ForgotPw"
+                options={{ 
+                  title: '',
+                  headerTransparent: true,
+                  headerTintColor: "white",
+                  headerStyle: {
+                  height: 185, // Specify the height of your custom header
+                                   }
+                 }}
               >
                 {props => <ForgotPw {...props} forgotPassword={this.forgotPassword} changeEmail={this.changeEmail}/>}
               </Stack.Screen>
 
               <Stack.Screen
                 name="ForgotPasswordVerification"
+                options={{ 
+                  title: '',
+                  headerTransparent: true,
+                  headerTintColor: "white",
+                  headerStyle: {
+                  height: 185, // Specify the height of your custom header
+                                   }
+                 }}
               >
                 {props => <ForgotPasswordVerification {...props} changeId={this.changeId} email={this.state.email} forgotPasswordEmailVerification={this.forgotPasswordEmailVerification}/>}
               </Stack.Screen>
@@ -191,6 +207,14 @@ class App extends Component {
               <Stack.Screen
                 name="changePassword"
                 children={() => <ChangePassword passwordReset={this.passwordReset}/>}
+                options={{ 
+                  title: '',
+                  headerTransparent: true,
+                  headerTintColor: "white",
+                  headerStyle: {
+                  height: 185, // Specify the height of your custom header
+                                   }
+                 }}
               >
               </Stack.Screen>
 
@@ -211,6 +235,14 @@ class App extends Component {
                 name="Verification"
                 // component={Verification}
                 children={() => <Verification activate={this.activate}/>}
+                options={{ 
+                  title: '',
+                  headerTransparent: true,
+                  headerTintColor: "white",
+                  headerStyle: {
+                  height: 185, // Specify the height of your custom header
+                                   }
+                 }}
               >
                 {/* {props => <Verification {...props} activated={this.activate}/>} */}
                 </Stack.Screen>
