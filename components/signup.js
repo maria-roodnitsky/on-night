@@ -216,7 +216,7 @@ class SignUp extends Component {
             >
               <ScrollView style={styles.container}>
                 <Text style={styles.heading}> Sign Up</Text>
-                <TextInput style={styles.input} autoCapitalize='none' placeholderTextColor = "#ffffff" onChangeText={e=>this.onEmailChange(e)} placeholder="DARTMOUTH EMAIL"/>
+                <TextInput style={styles.input} autoCapitalize='none' placeholderTextColor = "#ffffff" onChangeText={e=>this.onEmailChange(e.toLowerCase())} placeholder="DARTMOUTH EMAIL"/>
                 {this.state.invalidEmail && <Text style={[styles.buttonTextError]} > Invalid Email! Email must be of the form first.middle-initial.last.year-or-gr@dartmouth.edu or first.last.year-or-gr@dartmouth.edu </Text>}
                 <TextBox
                   onChangeText={e=>this.onPasswordChange(e)} 
