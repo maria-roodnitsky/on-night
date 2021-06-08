@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
   },
   backgroundImg: {
     width: '100%',
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height*1.1,
+    marginTop: -50,
   },
   buttonContainer: {
     alignSelf: 'center',
@@ -134,7 +135,7 @@ class ChangePassword extends Component {
         return (
             <KeyboardAvoidingView
               behavior={Platform.OS === "ios" ? "padding" : "height"}
-              style={{ flex: 1 }}
+              style={{ flex: 1, marginTop: 30, }}
             >
               <ScrollView style={styles.container}>
                 <Text style={styles.heading}> New Password</Text>

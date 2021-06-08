@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
   },
   backgroundImg: {
     width: '100%',
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height*1.1,
+    marginTop: -30,
   },
   buttonContainer: {
     alignSelf: 'center',
@@ -73,16 +74,18 @@ class TitlePage extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-        <View style={styles.image_box}>
-				<Logo height={175} width={175}/>
-			  </View>
-          <Text style={styles.main_heading}>OnNight</Text>
-        <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("SignIn")}}>
-          <Text style={styles.buttonText}>Sign In</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryButtonContainer} onPress={() => {this.props.navigation.navigate("SignUp")}}>
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
+          <View style={{marginTop: 30}}>
+            <View style={styles.image_box}>
+              <Logo height={175} width={175}/>
+            </View>
+              <Text style={styles.main_heading}>OnNight</Text>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("SignIn")}}>
+              <Text style={styles.buttonText}>Sign In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.secondaryButtonContainer} onPress={() => {this.props.navigation.navigate("SignUp")}}>
+              <Text style={styles.buttonText}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </SafeAreaView>
     );

@@ -188,7 +188,7 @@ class Safety extends Component {
         Call SNS
         </Text>
         </View>
-        <View style={{height: 135}}/>
+        <View style={{height: Dimensions.get("window").height * .2}}/>
 
       </ImageBackground>
     );

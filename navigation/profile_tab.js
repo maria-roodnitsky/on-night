@@ -162,6 +162,7 @@ class ProfileTab extends Component {
           <Stack.Screen
             name="Profile"
             options={{title: 'Profile',
+            headerTintColor: "white",
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
@@ -179,6 +180,7 @@ class ProfileTab extends Component {
           <Stack.Screen
             name="Portal"
             options={{title: 'Admin Portal',
+            headerTintColor: "white",
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
@@ -196,6 +198,7 @@ class ProfileTab extends Component {
           <Stack.Screen
             name="Events"
             options={{title: 'Events',
+            headerTintColor: "white",
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
@@ -213,6 +216,7 @@ class ProfileTab extends Component {
           <Stack.Screen
             name="NewEvent"
             options={{title: 'Events',
+            headerTintColor: "white",
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
@@ -230,6 +234,7 @@ class ProfileTab extends Component {
           <Stack.Screen
             name="Members"
             options={{title: 'Members',
+            headerTintColor: "white",
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
@@ -247,6 +252,7 @@ class ProfileTab extends Component {
           <Stack.Screen
             name="NewMember"
             options={{title: 'New Member',
+            headerTintColor: "white",
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
@@ -264,6 +270,7 @@ class ProfileTab extends Component {
           <Stack.Screen
             name="EditProfile"
             options={{title: 'Profile',
+            headerTintColor: "white",
             headerStyle: {
               backgroundColor: '#1c1d31',
               opacity: 1,
