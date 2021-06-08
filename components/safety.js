@@ -13,23 +13,53 @@ import Angel from '../img/angel.gif';
 const safetyPoints=[
   {
     title: "Level 1: Sobriety",
-    female_count: 1,
-    male_count: 8,
+    low_female_count: 0,
+    high_female_count: 1,
+    low_male_count: 0,
+    high_male_count: 1,
     moving: [{key: 'Slightly impaired reaction time'},],
     interacting: [{key: 'Slightly poorer judgement'}, {key: 'Unlikely to appear intoxicated'}],
     conclusion: "fine",
-    content: "If they want to stay sober, amazing! We love our sober friends."},
+    content: "If they want to stay sober, amazing! We love our sober friends.",
+    gif: 1,},
   {
-    title: "Level 2: Sobriety",
+    title: "Level 2: Euphoria",
+    low_female_count: 1,
+    high_female_count: 2,
+    low_male_count: 1,
+    high_male_count: 3,
+    moving: [{key: 'Slightly impaired reaction time'},],
+    interacting: [{key: 'Slightly poorer judgement'}, {key: 'Unlikely to appear intoxicated'}],
+    gif: 2,
+
+// Men: 2 - 4
+
+// Physical state:
+// Slightly 
+// coordination, slower reaction time
+
+// Mental state:
+// - more confident, chatty, talkative, animated, seem euphoric
+// - Inhibitions also begin to decline: impaired judgement, memory, 
+// - alertness is decreased, the individual begins having trouble processing information, they do not detect danger as quickly
+
+
     content: "To reduce the risk of alcohol-related harms, the 2020-2025 Dietary Guidelines for Americansexternal icon recommends that adults of legal drinking age can choose not to drink, or to drink in moderation by limiting intake to 2 drinks or less in a day for men or 1 drink or less in a day for women, on days when alcohol is consumed."
   },
   {
-    title: "Level 3: Sobriety",
-    content: "The Guidelines do not recommend that individuals who do not drink alcohol start drinking for any reason and that if adults of legal drinking age choose to drink alcoholic beverages, drinking less is better for health than drinking more."
+    title: "Level 3: Excitement",
+    content: "The Guidelines do not recommend that individuals who do not drink alcohol start drinking for any reason and that if adults of legal drinking age choose to drink alcoholic beverages, drinking less is better for health than drinking more.",
+    gif: 3,
   },
   {
-    title: "Level 4: Sobriety",
-    content: "Call 911 right away. Don't leave the person alone. Try to keep them awake and sitting upright."
+    title: "Level 4: Confusion",
+    content: "Call 911 right away. Don't leave the person alone. Try to keep them awake and sitting upright.",
+    gif: 4,
+  },
+  {
+    title: "Level 5: Stupor",
+    content: "Call 911 right away. Don't leave the person alone. Try to keep them awake and sitting upright.",
+    gif: 5,
   }
 ]
 
@@ -37,7 +67,37 @@ class Safety extends Component {
 
 
   renderSafetyCell(point) {
+
+
+    let imgSource
+
+    if (point.gif == 1) {
+        imgSource = require('../img/angel.gif');
+    } else if (point.gif == 2) {
+        imgSource = require('../img/wink.gif');
+    } else if (point.gif == 3) {
+      imgSource = require('../img/drunk.gif');
+  } else if (point.gif == 4) {
+    imgSource = require('../img/vomit.gif');
+} else if (point.gif == 5) {
+  imgSource = require('../img/coma.gif');
+}
+
+    let viewContainer
+
+    if (point.low_female_count == 0) {
+      viewContainer = ( <View>
+      <Text style={styles.text}> 0 </Text>
+      </View>
+      );
+    } else {
+      viewContainer = (
+        <View></View>
+      );
+    }
+
     return (
+      
         <View style={styles.container}>
           {/* <Image
             source={{ uri: video.snippet.thumbnails.default.url }}
@@ -51,16 +111,24 @@ class Safety extends Component {
             <View style={styles.image_box}>
 				      <Girl height={20} width={20}/>
               <Text style={styles.text}>  =  </Text>
-              {Array.from(Array(point.female_count)).map(() => {return <Champagne height={22} width={22}/>})}
+              {viewContainer}
+              {Array.from(Array(point.low_female_count)).map(() => {
+                return <Champagne height={22} width={22}/>
+                })}
+              <Text style={styles.text_boy}> - </Text>
+              {Array.from(Array(point.high_female_count)).map(() => {return <Champagne height={22} width={22}/>})}
 			      </View>
             <View style={styles.image_box}>
 				      <Boy height={18} width={15}/>
               <Text style={styles.text_boy}>   =  </Text>
-              {Array.from(Array(point.male_count)).map(() => {return <Champagne height={22} width={22}/>})}
+              {viewContainer}
+              {Array.from(Array(point.low_male_count)).map(() => {return <Champagne height={22} width={22}/>})}
+              <Text style={styles.text_boy}> - </Text>
+              {Array.from(Array(point.high_male_count)).map(() => {return <Champagne height={22} width={22}/>})}
 			      </View>
             </View>
             <Image
-        source={Angel}
+        source={imgSource}
          style={styles.gif_box}
       />
       </View>
