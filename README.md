@@ -10,6 +10,13 @@ To start, one of the best things was that each person had a different role (i.e.
 - Some issues with hooking up the backend to the frontend (e.g. configuring various screens and buttons to hit particular routes on the backend that initiate the account activation and password reset processes) 
 - When working in a large team, people have different coding styles and often need to work on the same files, so our different approaches sometimes confused each other. However, they also exposed us to newer and better ways of doing things.
 
+## User Flow
+
+1. The landing screen of the app shows two options to the user to decide betwen Sign In and Sign Up. The desion decision between making the user decide is that the user who wants to just sign in does not have to go to the signup page and vice versa.
+2. Sign Up- If the user clicks on the sign up button, the user will be redirected to the signup page, where they are required to enter their dartmouth email and set a password. The dartmouth email must be their full dartmouth email that has their first name, last name, and their class year. The passwords also must match. The sign up page also offers the user to sign in in case they find out that they already have an account.
+3. After the user signs up, they get to a screen where they are asked to confirm their email and click a button after they have confirmed the link on their email. 
+4. The user also gets an option to Sign In. They have to enter their email and password. In case they don't have an account, they will be notified.
+5. On the sign in page, the user can forgot their password as well. When they click forget password, they are redirected to a page where they have to enter their email. After they enter their email, they have to confirm it and click on the confirm button. Post that, they have to enter their new password and are logged in the app.
 
 ## Dev Site Update
 
