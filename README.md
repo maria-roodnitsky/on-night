@@ -26,6 +26,8 @@ Points to cover:
 - when you sign up, what are the defaults?
 - what are the different administrative levels of the app? how does this change what you can and cannot access through the application?
 
+## Design 
+Figma has been updated! There is also a GIF.md to poke around with. 😄
 
 ## User Flows
 
