@@ -36,8 +36,11 @@ Select the project entitled `on-night` (NOT OnNight, which is an version for tes
 At this point, you should be able to sign in or sign up. If you choose sign up, you will need your Dartmouth email and you will need to be an undergraduate student (app checks if you are an undergrad). If you are not an undergrad and still want to use the app, please sign in with the credentials below:
 
 **Will Toth credentials:**
+
 email: `william.a.toth.23@dartmouth.edu`
+
 password: `password`
+
 (i know, very very original password)
 
 If you are able to sign up, a link will be sent to your email before you can enter. It takes anywhere from a few seconds to a few minutes to receive this email, so hang tight. Also, check your spam/junk folders too as it could appear there. Once you have done so, you can can click the button in app and proceed to the content.
