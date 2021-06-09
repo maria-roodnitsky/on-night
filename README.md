@@ -39,7 +39,7 @@ Points to cover:
 
 *** 
 
-## Dev Site Update
+## 5/22/21 (Dev Site Update):
 
 **Front End:** We built the frontend using React Native. We added the Safety, Events, and Users tab. Both, Events and Users, tab are dynamic and fetch data from the API (backend). The events tab displays the frat events and the users tab displays the users of the app, both of which will be updated by the admins. Safety page is a static page which provides information about safety guidelies that need to be followed in frats. We utilize a color theme which is integral to the app. Note that while the app is fetching data at the momoment, all of the API functions (get, post, delete, put) are functional. The back end README is updated as well at https://github.com/dartmouth-cs52-21S/project-api-on-night.
 
