@@ -7,7 +7,11 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
-  "rnpm": { "assets": [ "assets/fonts" ] },
+  "rnpm": {
+    "assets": [
+      "assets/fonts"
+    ]
+  },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.5",
     "@react-native-community/masked-view": "0.1.10",
@@ -40,13 +44,19 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/eslint-parser": "^7.14.4",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.26.0",
+    "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
-    "typescript": "~4.0.0"
+    "eslint-plugin-react-native": "^3.11.0",
+    "eslint-webpack-plugin": "^2.5.4",
+    "typescript": "~4.0.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "private": true
 }

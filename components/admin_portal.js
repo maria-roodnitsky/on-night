@@ -1,42 +1,34 @@
-import color from 'color';
 import React, { Component } from 'react';
-import { Alert } from 'react-native';
-import { Text, View, Button, TextInput, SafeAreaView, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native';
-import signin from '../App';
-import signup from '../App';
-import PasswordInputText from 'react-native-hide-show-password-input';
-import { Icon } from 'react-native-elements';
-import TextBox from 'react-native-password-eye'; 
-import axios from 'axios';
-
-const ROOT_URL = 'https://on-night-api.herokuapp.com/api';
+import {
+  Text, View, SafeAreaView, StyleSheet, ImageBackground, TouchableOpacity, Dimensions,
+} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-      paddingTop: 50,
+    paddingTop: 50,
   },
   input: {
     height: 45,
     margin: 20,
     backgroundColor: '#ffffff80',
-    borderRadius: 8, 
+    borderRadius: 8,
     textAlign: 'left',
     paddingLeft: 16,
     fontFamily: 'Open-Sans',
-    textTransform: "uppercase"
+    textTransform: 'uppercase',
   },
-  inputIcon : {
+  inputIcon: {
     flex: 1,
     flexDirection: 'row',
-  
-  },  
+
+  },
   heading: {
     fontSize: 32,
     textAlign: 'center',
     margin: 25,
     fontFamily: 'Comfortaa-Regular',
     color: 'white',
-    marginTop: Dimensions.get("window").height * .1,
+    marginTop: Dimensions.get('window').height * 0.1,
   },
   house: {
     fontSize: 20,
@@ -69,11 +61,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     margin: 25,
     color: 'white',
-    fontFamily: 'Comfortaa-Regular'
+    fontFamily: 'Comfortaa-Regular',
   },
   backgroundImg: {
     width: '100%',
-    height: Dimensions.get("window").height,
+    height: Dimensions.get('window').height,
   },
   buttonContainer: {
     alignSelf: 'center',
@@ -81,98 +73,102 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 100,
     padding: 10,
-    borderRadius: 10, 
+    borderRadius: 10,
     margin: 10,
-    opacity: .8,
+    opacity: 0.8,
   },
   secondaryButtonContainer: {
     alignSelf: 'center',
     backgroundColor: '#A9469F',
     width: '50%',
     padding: 10,
-    borderRadius: 20, 
+    borderRadius: 20,
     margin: 10,
-    opacity: .6,
+    opacity: 0.6,
     borderWidth: 2,
-    borderColor:'#A9469F',
+    borderColor: '#A9469F',
   },
   buttonText: {
     textAlign: 'center',
     color: 'black',
-    fontFamily: 'Open-Sans', 
-    textTransform: "uppercase",
+    fontFamily: 'Open-Sans',
+    textTransform: 'uppercase',
     fontSize: 20,
     marginTop: 25,
   },
   contents: {
-      width: '90%',
-      backgroundColor: 'rgba(255,255,255,0.5)',
-      borderRadius: 10,
-      marginLeft: '5%',
+    width: '90%',
+    backgroundColor: 'rgba(255,255,255,0.5)',
+    borderRadius: 10,
+    marginLeft: '5%',
   },
   footer: {
     marginTop: 200,
-    alignSelf: "center",
-  }
+    alignSelf: 'center',
+  },
 });
 
 class AdminPortal extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-      };
-    }
+    };
+  }
 
     renderPortalContents = () => {
-        if (this.props.user.house != "none") {
-            return (
-                <View>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("Events")}}>
-                        <Text style={styles.buttonText}>Events</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigation.navigate("Members")}}>
-                        <Text style={styles.buttonText}>Members</Text>
-                    </TouchableOpacity>
-                </View>
-            );
-        } else {
-            return (
-                <View style={styles.contents}>
-                    <Text style={styles.contentsTitle}>To edit your organization, please have your current admin add you as a member</Text>
-                </View>
-            );
-        }
-    }
-
-
-    renderPortal = () => { 
-        if (this.props.user == null) {
-            return (
-                <View style={styles.container}>
-                    <Text style={styles.heading}> Loading</Text>
-                </View>
-            );
-        } else {
-            return (
-                <View>
-                    <Text style={styles.title}>Welcome to the admin portal, the place for those in charge of a greek house on OnNight! Here, you can edit membership and events of our organization.</Text>
-                    <Text style={styles.house}> Your Organization: {this.props.user.house}</Text>
-                    {this.renderPortalContents()}
-                </View>
-            );
-        }
-    }
-  
-    render () {
+      if (this.props.user.house != 'none') {
         return (
-            <SafeAreaView>
-              <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
-                {this.renderPortal()}
-              </ImageBackground>
-            </SafeAreaView>
+          <View>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => { this.props.navigation.navigate('Events'); }}>
+              <Text style={styles.buttonText}>Events</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => { this.props.navigation.navigate('Members'); }}>
+              <Text style={styles.buttonText}>Members</Text>
+            </TouchableOpacity>
+          </View>
         );
+      } else {
+        return (
+          <View style={styles.contents}>
+            <Text style={styles.contentsTitle}>To edit your organization, please have your current admin add you as a member</Text>
+          </View>
+        );
+      }
     }
-  }
+
+    renderPortal = () => {
+      if (this.props.user == null) {
+        return (
+          <View style={styles.container}>
+            <Text style={styles.heading}> Loading</Text>
+          </View>
+        );
+      } else {
+        return (
+          <View>
+            <Text style={styles.title}>Welcome to the admin portal, the place for those in charge of a greek house on OnNight! Here, you can edit membership and events of our organization.</Text>
+            <Text style={styles.house}>
+              {' '}
+              Your Organization:
+              {' '}
+              {this.props.user.house}
+            </Text>
+            {this.renderPortalContents()}
+          </View>
+        );
+      }
+    }
+
+    render() {
+      return (
+        <SafeAreaView>
+          <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImg}>
+            {this.renderPortal()}
+          </ImageBackground>
+        </SafeAreaView>
+      );
+    }
+}
 
 export default AdminPortal;
