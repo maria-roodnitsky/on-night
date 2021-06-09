@@ -34,7 +34,7 @@ Points to cover:
 3. A user can edit their profile
 4. An admin user can schedule and remove public Greek events, which are then viewable to all on the calendar
 5. An admin user can add/remove users of OnNight to their Greek house
-6. An admin user can search the Dartmouth database and see who is on OnNight, who is affiliated, and who has not yet claimeed their account
+6. An admin user can search the Dartmouth database and see who is on OnNight, who is affiliated, and who has not yet claimed their account
 
 
 *** 
