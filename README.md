@@ -20,13 +20,22 @@ Each one of us took on a main role: (i.e. backend, frontend UI, frontend API cal
 - We, for the most part, hooked backend up to frontend pretty easily. Sometimes parts were developed at different times though, so testing depended on all of them being done and that caused some "wait, but did it work?" moments.
 - Like with all teams, valuing everyone's time while also keeping people sufficiently informed can be a challenge. Letting go of pieces we weren't directly involved with was hard at first, but eventually we got enough experience working with each other that we trusted the "task hand off."
 
-## User Flow
+## Running the application
+Points to cover: 
+- expo install instructions
+- when you sign up, what are the defaults?
+- what are the different administrative levels of the app? how does this change what you can and cannot access through the application?
 
-1. The landing screen of the app shows two options to the user to decide betwen Sign In and Sign Up. The desion decision between making the user decide is that the user who wants to just sign in does not have to go to the signup page and vice versa.
-2. Sign Up- If the user clicks on the sign up button, the user will be redirected to the signup page, where they are required to enter their dartmouth email and set a password. The dartmouth email must be their full dartmouth email that has their first name, last name, and their class year. The passwords also must match. The sign up page also offers the user to sign in in case they find out that they already have an account.
-3. After the user signs up, they get to a screen where they are asked to confirm their email and click a button after they have confirmed the link on their email. 
-4. The user also gets an option to Sign In. They have to enter their email and password. In case they don't have an account, they will be notified.
-5. On the sign in page, the user can forgot their password as well. When they click forget password, they are redirected to a page where they have to enter their email. After they enter their email, they have to confirm it and click on the confirm button. Post that, they have to enter their new password and are logged in the app.
+
+## User Flows
+
+1. A user can sign up, sign in, and request a "forgot password" reset link 
+2. A user can view a calendar of events, access relevant (and beautiful) safety information, and directly contact SNS for help
+3. A user can edit their profile
+4. An admin user can schedule and remove public Greek events, which are then viewable to all on the calendar
+5. An admin user can add/remove users of OnNight to their Greek house
+6. An admin user can search the Dartmouth database and see who is on OnNight, who is affiliated, and who has not yet claimeed their account
+
 
 *** 
 
