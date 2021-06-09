@@ -49,7 +49,7 @@ What Worked: We were able to create the front end in React Native from Scratch. 
 
 What did not work: There were a lot of things that worked in React but did not work in React Native. We had to, in a way, recreate our understanding of some react/html elements, usting views, flatlists, and stack navigators and screens. 
 
-![devsite](https://github.com/dartmouth-cs52-21S/project-on-night/blob/d4f2ac163fdda8a3598990f7badb7409b8fbb316/img/devsite.gif)
+## Beginnings of the project
 
 ![the-best-team](https://user-images.githubusercontent.com/65991441/118315938-03bc2000-b4ab-11eb-92a1-bb04308153c1.png)
 
